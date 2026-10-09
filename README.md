@@ -137,6 +137,8 @@ From the [releases](https://github.com/kikoz85/TreeX/releases):
 
 First-launch steps, Homebrew and uninstalling: [docs/user/install.md](docs/user/install.md).
 
+**Updating**: click **Updates** in the bottom-right corner of the home screen (or ⌘K → *Check for updates*). TreeX asks GitHub for the latest release and, if you choose to update, downloads it, checks its digital signature, replaces itself and restarts. Flatpak can't update apps itself: install the new `.flatpak` file.
+
 ## Quick start
 
 ```bash
@@ -163,7 +165,7 @@ In the app:
 
 The user guides are in [`docs/`](docs/README.md) (in Italian): installation, the app, the command line, configuration and macOS permissions. What changed in each version is in the [release notes](https://github.com/kikoz85/TreeX/releases).
 
-TreeX never uses the network. Scans read only metadata (names, sizes, dates). File contents are read only when you start a duplicate search, and only for files that share their size with another one.
+TreeX uses the network only when you click **Updates**: one request to GitHub for the latest release, plus the download if you choose to update. Nothing about you or your disk is sent. Scans read only metadata (names, sizes, dates). File contents are read only when you start a duplicate search, and only for files that share their size with another one.
 
 ## Support TreeX
 

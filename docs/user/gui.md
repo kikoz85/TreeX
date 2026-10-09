@@ -205,6 +205,17 @@ Ogni pannello (Dev-Junk, inspector, Tipi di file, Duplicati, Lista dei file, Cos
 
 TreeX misura quanto lavora la scheda grafica a ogni frame. Se una mappa molto grande è troppo pesante per la GPU (tipicamente una grafica integrata Intel con centinaia di migliaia di blocchi), riduce da sola l'antialiasing dei bordi (4× → 2× → 1×) per restare fluida, e lo ripristina sulle mappe più piccole. Sulle GPU potenti (Apple Silicon, NVIDIA, AMD) non cambia nulla: la grafica resta al massimo. Su una Intel UHD 620 una mappa di 143.000 blocchi gira a 60 fps sia in 2D sia in 2.5D.
 
+### Aggiornare TreeX
+
+In basso a destra nella home c'è **Aggiornamenti** (anche ⌘K → *Cerca aggiornamenti*, da qualsiasi schermata). TreeX non controlla mai da solo: solo a quel clic chiede a GitHub qual è l'ultima release.
+
+- **Sei già all'ultima versione**: lo dice e basta.
+- **C'è una versione nuova**: una finestra mostra le novità e il pulsante **Aggiorna e riavvia**. TreeX scarica il pacchetto per il tuo sistema, controlla che sia **autentico** (la lista dei checksum della release è firmata con una chiave che solo chi pubblica TreeX possiede) e **integro** (il checksum del file scaricato), poi sostituisce l'app e si riapre. Se un controllo fallisce non installa nulla. Il download si può annullare; *Più tardi* chiude la finestra e la pillola in home resta verde (*TreeX X disponibile*) finché l'app è aperta.
+- **macOS**: dopo l'aggiornamento macOS chiede di nuovo l'accesso completo al disco (vedi [Permessi su macOS](macos-permissions.md)), perché le build non sono firmate con un certificato Apple.
+- **Windows**: i file vecchi restano accanto ai nuovi con estensione `.old` e vengono cancellati al riavvio successivo.
+- **Linux**: l'AppImage viene sostituita (con la nuova versione nel nome, se avevi tenuto quello originale); l'archivio installato con `install.sh` aggiorna `treex-gui` e `treex`.
+- **Quando serve il download a mano**, la finestra lo spiega e apre la pagina della release: Flatpak (che non permette alle app di aggiornarsi da sole), una cartella in cui TreeX non può scrivere (ad esempio `C:\Program Files` senza essere amministratore), macOS che esegue l'app da una copia temporanea (sposta TreeX in Applicazioni), TreeX compilato dai sorgenti.
+
 ## Scorciatoie
 
 | Tasto | Azione |
@@ -229,4 +240,4 @@ TreeX misura quanto lavora la scheda grafica a ogni frame. Se una mappa molto gr
 
 ## Privacy
 
-TreeX non usa la rete. L'analisi legge solo i metadati (nomi, dimensioni, date). Il contenuto dei file viene letto solo quando avvii una **ricerca di duplicati**, e solo per i file che hanno la stessa dimensione di un altro; nulla viene salvato o inviato. Per le cartelle protette di macOS vedi [Permessi su macOS](macos-permissions.md).
+TreeX usa la rete solo quando clicchi **Aggiornamenti** (una richiesta a GitHub, più il download se scegli di aggiornare): nessun dato su di te o sul disco viene inviato. L'analisi legge solo i metadati (nomi, dimensioni, date). Il contenuto dei file viene letto solo quando avvii una **ricerca di duplicati**, e solo per i file che hanno la stessa dimensione di un altro; nulla viene salvato o inviato. Per le cartelle protette di macOS vedi [Permessi su macOS](macos-permissions.md).

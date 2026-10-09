@@ -130,6 +130,8 @@ Dalle [release](https://github.com/kikoz85/TreeX/releases):
 
 Primo avvio, Homebrew e disinstallazione: [docs/user/install.md](docs/user/install.md).
 
+**Aggiornare**: clicca **Aggiornamenti** nell'angolo in basso a destra della home (oppure ⌘K → *Cerca aggiornamenti*). TreeX chiede a GitHub qual è l'ultima release e, se scegli di aggiornare, la scarica, ne verifica la firma digitale, si sostituisce e si riavvia. Flatpak non permette alle app di aggiornarsi da sole: installa il nuovo file `.flatpak`.
+
 ## Uso rapido
 
 ```bash
@@ -148,7 +150,7 @@ Nell'app: `Tab` alterna 2D / 2.5D, rotella per zoomare sul dettaglio, `⌘K` cer
 
 Le guide per l'utente sono in [`docs/`](docs/README.md): installazione, l'app, la riga di comando, la configurazione e i permessi di macOS. Le novità di ogni versione sono nelle [note di rilascio](https://github.com/kikoz85/TreeX/releases).
 
-TreeX non usa mai la rete. Le scansioni leggono solo i metadati (nomi, dimensioni, date); il contenuto dei file viene letto solo quando avvii una ricerca di duplicati, e solo per i file che hanno la stessa dimensione di un altro.
+TreeX usa la rete solo quando clicchi **Aggiornamenti**: una richiesta a GitHub per sapere qual è l'ultima release, più il download se scegli di aggiornare. Nulla di te o del tuo disco viene inviato. Le scansioni leggono solo i metadati (nomi, dimensioni, date); il contenuto dei file viene letto solo quando avvii una ricerca di duplicati, e solo per i file che hanno la stessa dimensione di un altro.
 
 ## Sostieni TreeX
 

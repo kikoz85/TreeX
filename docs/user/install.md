@@ -155,3 +155,7 @@ sha256sum -c --ignore-missing SHA256SUMS-linux
 | `~/.local/state/treex/` | storico delle pulizie |
 | `~/.local/share/treex/` | preferenze dell'app (lingua, vista) |
 | `~/.config/treex/` | regole Dev-Aware personalizzate, se create |
+
+## Aggiornare
+
+Dall'app: **Aggiornamenti** in basso a destra nella home, oppure ⌘K → *Cerca aggiornamenti* ([dettagli](gui.md#aggiornare-treex)). TreeX scarica la nuova versione, ne verifica la firma digitale e il checksum, si sostituisce e si riavvia. In alternativa, o con Flatpak, scarica la nuova release e installala come la prima volta: le analisi salvate, lo storico delle pulizie e le preferenze restano.
