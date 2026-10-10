@@ -167,7 +167,9 @@ Rotella o pinch per zoomare sul punto sotto il cursore, trascina per spostarti. 
 
 ![Zoom](../images/gui-zoom.png)
 
-In 2.5D, **trascina con il tasto destro** (o ⌥ + trascina) per ruotare la città. `0` reimposta la vista.
+### Ruotare la città (2.5D)
+
+In 2.5D, accanto a *2D / 2.5D* in alto a destra, ci sono **↺** e **↻**: ogni clic gira la città di 45° verso sinistra o verso destra, con un'animazione; i tasti **`Q`** ed **`E`** fanno lo stesso (anche dalla 2D, che passa in 2.5D). Per una rotazione libera: **due dita che ruotano sul trackpad** (macOS) oppure **trascina con il tasto destro** del mouse (su macOS anche ⌥ + trascina). `0` riporta la città all'angolo iniziale, per la via più breve, e reimposta zoom e posizione. Su una finestra stretta i pulsanti dell'altezza in alto mostrano solo l'icona e la ricerca solo la lente: il nome compare al passaggio del mouse.
 
 ### Navigare
 
@@ -234,6 +236,7 @@ In basso a destra nella home c'è **Aggiornamenti** (anche ⌘K → *Cerca aggio
 | `Spazio` | Quick Look dell'elemento selezionato |
 | `⌘⌫` / `⌥⌘⌫` | sposta nel Cestino / elimina definitivamente |
 | `⌘S` / `⇧⌘O` | salva l'analisi / apri un'analisi salvata |
+| `Q` / `E` | ruota la città 2.5D di 45° a sinistra / a destra |
 | `0` | reimposta la vista |
 | `Invio` | entra nella cartella selezionata |
 | `Esc` / `Backspace` | deseleziona (anche la selezione multipla) / risali |

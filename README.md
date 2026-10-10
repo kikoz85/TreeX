@@ -154,7 +154,7 @@ treex diff ~/Developer           # what changed since the previous analysis
 
 In the app:
 
-- `Tab` switches between 2D and 2.5D;
+- `Tab` switches between 2D and 2.5D; in 2.5D, ↺ ↻ (or `Q` / `E`) turn the city, as do two fingers on a Mac trackpad;
 - the scroll wheel zooms into detail;
 - `⌘K` searches everything;
 - `4` turns on Reclaim mode;

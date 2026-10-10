@@ -144,7 +144,7 @@ treex delete ~/Downloads/vecchio.iso       # nel Cestino, con i controlli
 treex diff ~/Developer                     # cosa è cambiato dall'analisi precedente
 ```
 
-Nell'app: `Tab` alterna 2D / 2.5D, rotella per zoomare sul dettaglio, `⌘K` cerca ovunque, `T` mostra i tipi di file, `U` cerca i duplicati, `L` elenca tutti i file, `C` mostra cosa è cambiato; ⌘-clic seleziona, ⌘⌫ sposta nel Cestino, tasto destro per il menu (su Windows e Linux: `Ctrl`-clic, `Canc`). Guida completa in [docs/user/gui.md](docs/user/gui.md).
+Nell'app: `Tab` alterna 2D / 2.5D, in 2.5D ↺ ↻ (o `Q` / `E`) ruotano la città, come due dita sul trackpad del Mac, rotella per zoomare sul dettaglio, `⌘K` cerca ovunque, `T` mostra i tipi di file, `U` cerca i duplicati, `L` elenca tutti i file, `C` mostra cosa è cambiato; ⌘-clic seleziona, ⌘⌫ sposta nel Cestino, tasto destro per il menu (su Windows e Linux: `Ctrl`-clic, `Canc`). Guida completa in [docs/user/gui.md](docs/user/gui.md).
 
 ## Documentazione
 
