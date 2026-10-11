@@ -3,7 +3,7 @@
 <h1 align="center">TreeX</h1>
 <p align="center"><b>English</b> · <a href="README.it.md">Italiano</a></p>
 <p align="center"><b>The disk analyzer for developers.</b> Blazing fast, build-artifact aware, and a pleasure to explore.</p>
-<p align="center"><a href="https://github.com/kikoz85/TreeX/releases/latest"><img src="https://img.shields.io/github/v/release/kikoz85/TreeX?label=download&color=7BE486" alt="Download"></a> <a href="https://github.com/sponsors/kikoz85"><img src="https://img.shields.io/badge/sponsor-%E2%9D%A4-ea4aaa?logo=githubsponsors&logoColor=white" alt="Sponsor TreeX"></a> <img src="https://img.shields.io/badge/macOS%20%C2%B7%20Windows%20%C2%B7%20Linux-1EBCC3" alt="macOS · Windows · Linux"></p>
+<p align="center"><a href="https://github.com/kikoz85/TreeX/releases/latest"><img src="https://img.shields.io/github/v/release/kikoz85/TreeX?label=download&color=7BE486" alt="Download"></a> <a href="https://www.enricofanucchi.com/en/app/treex?utm_source=github&utm_campaign=readme"><img src="https://img.shields.io/badge/website-enricofanucchi.com-F7941D" alt="TreeX website"></a> <a href="https://github.com/sponsors/kikoz85"><img src="https://img.shields.io/badge/sponsor-%E2%9D%A4-ea4aaa?logo=githubsponsors&logoColor=white" alt="Sponsor TreeX"></a> <img src="https://img.shields.io/badge/macOS%20%C2%B7%20Windows%20%C2%B7%20Linux-1EBCC3" alt="macOS · Windows · Linux"></p>
 
 <p align="center"><img src="docs/images/gui-iso.png" width="820" alt="TreeX: your disk as an isometric city"></p>
 
