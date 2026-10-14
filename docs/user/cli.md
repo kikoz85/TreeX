@@ -1,5 +1,62 @@
 # Riferimento CLI
 
+## Installare `treex` come comando
+
+`treex` è incluso in ogni pacchetto di TreeX; per usarlo da qualsiasi terminale (anche via SSH su un server):
+
+| Sistema | Come |
+|---|---|
+| **macOS** | **Homebrew** (`brew install --cask ./treex.rb`): installa anche `treex`, le pagine `man` e i completamenti. Dal **DMG**: nell'app, ⌘K → *Installa il comando treex nel terminale* (collega `/usr/local/bin/treex` alla copia dentro l'app; macOS chiede la password se serve). **Solo riga di comando**: `treex-cli-<ver>-macos-universal.tar.gz`, poi `./install.sh` (in `/usr/local`; `--user` per `~/.local`) |
+| **Linux** | **Debian, Ubuntu**: `sudo apt install ./treex_<ver>_amd64.deb` (`/usr/bin/treex`, `man`, completamenti). **Qualsiasi distribuzione**: `treex-cli-<ver>-linux-x86_64.tar.gz`, poi `./install.sh` (`--user`: in `~/.local`, senza root). **AppImage**: nell'app, Ctrl+K → *Installa il comando treex* (crea `~/.local/bin/treex`). **Flatpak**: `flatpak run --command=treex dev.treex.TreeX` (conviene un alias) |
+| **Windows** | `treex-cli-<ver>-windows-x64.zip`, poi doppio clic su `install.cmd`: copia `treex.exe` in `%LOCALAPPDATA%\Programs\TreeX CLI` e lo aggiunge al PATH dell'utente, senza amministratore (`install.cmd -Uninstall` per toglierlo). Dall'app: Ctrl+K → *Installa il comando treex* (aggiunge al PATH la cartella `bin` accanto a `TreeX.exe`) |
+
+Disinstallare: `./install.sh --uninstall` (con le stesse opzioni dell'installazione), `sudo apt remove treex`, `install.cmd -Uninstall`.
+
+**Manuale**: `man treex` (macOS e Linux) descrive tutti i comandi, con esempi, file e variabili d'ambiente; ogni comando ha la sua pagina: `man treex-tui`, `man treex-scan`, `man treex-clean`, `man treex-rules-check`… Ovunque: `treex --help`, `treex <comando> --help`.
+
+**Completamento con Tab** per bash, zsh e fish: installato da `install.sh`, dal pacchetto `.deb`, da Homebrew e dal comando dell'app. Altrimenti `treex completions <bash|zsh|fish|powershell|elvish>` stampa lo script; ad esempio in PowerShell aggiungi al profilo (`notepad $PROFILE`) la riga `. "$env:LOCALAPPDATA\Programs\TreeX CLI\treex-completion.ps1"` (il file lo copia `install.cmd`; non si chiama `treex.ps1` perché PowerShell lo eseguirebbe al posto di `treex.exe`).
+
+## `treex tui [PATH]`
+
+L'analisi in modo **interattivo, nel terminale**: stesso motore, stesse regole Dev-Aware e stessi controlli di sicurezza dell'app, senza finestre. Funziona in qualsiasi terminale di macOS, Windows (Windows Terminal, PowerShell) e Linux, anche **via SSH** su un server senza interfaccia grafica. Senza `PATH` analizza la cartella corrente.
+
+![treex tui](../images/tui-home.png)
+
+All'avvio mostra l'analisi in corso (file, cartelle e spazio contati dal vivo; se esiste un'analisi precedente della stessa cartella la aggiorna invece di rifarla). Poi tre viste:
+
+- **1 Folders**: il contenuto della cartella per dimensione, con barra della quota, percentuale, elementi e ultima modifica. Le cartelle sono in ottanio (▸), i file con il pallino del colore della loro categoria (come nell'app), gli **artefatti di build** in corallo (♻) con il loro ecosistema. Sotto, il percorso completo e i dettagli dell'elemento selezionato (spazio su disco e logico, elementi, data di modifica; per un artefatto la regola e il comando che lo ricrea).
+- **2 Dev-Junk**: tutti gli artefatti e le cache che si possono ricreare, dal più grande, con ecosistema, giorni di inattività del progetto e tipo (*cache*, *rebuilt*; ⚠ *manual* per quelli che possono contenere modifiche a mano, come i virtualenv). → mostra l'artefatto nella sua cartella.
+- **3 File types**: lo spazio per estensione, con i colori delle categorie.
+
+![Dev-Junk](../images/tui-devjunk.png)
+
+| Tasto | Azione |
+|---|---|
+| `↑` `↓` / `j` `k` | muoversi (`PgUp` `PgDn`, `g` `G`: primo, ultimo) |
+| `→` `Invio` `l` | aprire la cartella · in Dev-Junk: mostrarla nella sua cartella |
+| `←` `Backspace` `h` | tornare alla cartella superiore |
+| `1` `2` `3` `Tab` | Folders · Dev-Junk · File types |
+| `spazio` | selezionare / deselezionare (`Esc` toglie le selezioni) |
+| `d` `Canc` | spostare nel Cestino gli elementi selezionati (o quello sotto il cursore) |
+| `D` `Maiusc+Canc` | eliminare definitivamente |
+| `/` | filtrare la cartella per nome (`Invio` tiene il filtro, `Esc` lo toglie) |
+| `s` | ordinare per dimensione, nome, elementi, data di modifica |
+| `r` `R` | aggiornare l'analisi · rianalizzare tutto |
+| `?` | tutti i tasti |
+| `q` `Ctrl+C` | uscire |
+
+Anche il **mouse**: clic per selezionare, doppio clic per aprire, rotella per scorrere, clic sulle schede.
+
+**Eliminare** chiede sempre conferma, con l'elenco, lo spazio e gli avvisi (cartelle con un repository git, artefatti *manual*):
+
+![Conferma](../images/tui-confirm.png)
+
+Gli elementi normali passano dagli stessi controlli di `treex delete` (cartelle di sistema e della home protette, identità ricontrollata un istante prima), gli artefatti da quelli di `treex clean` (regola ricontrollata sul disco). Tutto finisce nello storico (`treex history`). Se lo spostamento nel Cestino non riesce (ad esempio su alcuni dischi di rete), TreeX lo dice e lascia l'elemento dov'è: `D` lo elimina definitivamente.
+
+**Colori**: quelli dell'app (sfondo blu notte, menta, ottanio, corallo) a 24 bit dove il terminale li supporta (`COLORTERM=truecolor`, Windows Terminal, iTerm2, WezTerm, VS Code…), altrimenti i più vicini della tavolozza a 256 colori; `NO_COLOR=1` li toglie.
+
+Accetta le opzioni di analisi di `treex scan`: `--fresh`, `--from <FILE>` (esplora un'analisi salvata), `--save`, `--cross-mounts`, `-j`.
+
 ## `treex scan [PATH]`
 
 Scansiona `PATH` (default: directory corrente) e stampa le voci più grandi per spazio allocato.
@@ -324,7 +381,6 @@ $ treex diff ~/Developer
      −1.9 GiB  old-prototype/
 ```
 
-## Comandi pianificati
-| Comando | Versione | Descrizione |
-|---|---|---|
-| `treex tui` | 0.8.0 | interfaccia da terminale |
+## `treex completions <SHELL>`
+
+Stampa lo script di completamento con Tab per `bash`, `zsh`, `fish`, `powershell` o `elvish` (vedi [Installare `treex` come comando](#installare-treex-come-comando)). Ad esempio, solo per la sessione corrente di bash: `source <(treex completions bash)`.

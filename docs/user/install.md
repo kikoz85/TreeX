@@ -25,13 +25,9 @@ Per analizzare l'intero disco serve l'**Accesso completo al disco**: TreeX lo se
 
 ### La CLI `treex`
 
-La CLI è inclusa nell'app (`TreeX.app/Contents/Helpers/treex`). Per usarla dal terminale:
+La CLI è inclusa nell'app (`TreeX.app/Contents/Helpers/treex`). Per usarla da qualsiasi terminale, nell'app: **⌘K → Installa il comando treex nel terminale**. Collega `/usr/local/bin/treex` (e le pagine `man` e i completamenti) alla copia dentro l'app, che si aggiorna con l'app; macOS chiede la password se `/usr/local` non è scrivibile.
 
-```bash
-sudo ln -sf /Applications/TreeX.app/Contents/Helpers/treex /usr/local/bin/treex
-```
-
-In alternativa c'è l'archivio `treex-<ver>-macos-universal.tar.gz`, che contiene solo la CLI.
+Solo la riga di comando, senza l'app: `treex-cli-<ver>-macos-universal.tar.gz`, poi `./install.sh` (in `/usr/local`; `--user` per `~/.local`). Dettagli in [Installare `treex` come comando](cli.md#installare-treex-come-comando).
 
 ### Homebrew
 
@@ -67,7 +63,7 @@ La prima volta Windows SmartScreen può mostrare "Windows ha protetto il PC" (l'
 
 **Amministratore (facoltativo)**: avviato come amministratore (tasto destro → *Esegui come amministratore*, oppure *Riavvia come amministratore* dal messaggio sulle cartelle protette) TreeX legge le cartelle di sistema protette, analizza un disco intero leggendo direttamente la Master File Table e dalla seconda volta lo aggiorna dal journal USN in una frazione di secondo.
 
-**CLI**: `treex.exe` è nella cartella `bin` dell'archivio. Aggiungi quella cartella al `PATH` (Impostazioni → Sistema → Informazioni → Impostazioni di sistema avanzate → Variabili d'ambiente) per usarla da qualsiasi terminale.
+**CLI**: `treex.exe` è nella cartella `bin` dell'archivio. Per usarla da qualsiasi terminale, nell'app: **Ctrl+K → Installa il comando treex nel terminale** (aggiunge quella cartella al PATH dell'utente; apri poi un nuovo terminale). Solo la riga di comando, senza l'app: `treex-cli-<ver>-windows-x64.zip`, poi doppio clic su `install.cmd` (nessun permesso di amministratore). Dettagli in [Installare `treex` come comando](cli.md#installare-treex-come-comando).
 
 **Verificare il download** (PowerShell):
 
@@ -95,6 +91,8 @@ Tre formati, stessa app:
 | **AppImage** (`TreeX-<ver>-x86_64.AppImage`) | chi vuole un file unico, senza installare nulla | gira sulla maggior parte delle distribuzioni (glibc 2.28 o successiva); vede tutto il sistema |
 | **Flatpak** (`TreeX-<ver>-x86_64.flatpak`) | chi usa Flatpak (Fedora Silverblue, Linux Mint, elementary…) | aggiornamenti e runtime gestiti da Flatpak; vedi le note sulla sandbox qui sotto |
 | **Archivio** (`treex-<ver>-linux-x86_64.tar.gz`) | chi vuole `treex` e l'app nella propria home | `install.sh` senza root |
+
+Solo la **riga di comando** (server, macchine senza interfaccia grafica): il pacchetto `treex_<ver>_amd64.deb` per Debian e Ubuntu (`sudo apt install ./treex_<ver>_amd64.deb`) oppure l'archivio `treex-cli-<ver>-linux-x86_64.tar.gz` con `./install.sh` per qualsiasi distribuzione; poi `treex tui` e `man treex`. Dettagli in [Installare `treex` come comando](cli.md#installare-treex-come-comando).
 
 ### AppImage
 
@@ -125,7 +123,7 @@ Il runtime (`org.freedesktop.Platform` 26.08) si scarica da Flathub se manca. La
 ### Archivio
 
 1. Scarica `treex-<ver>-linux-x86_64.tar.gz` ed estrailo.
-2. Dalla cartella estratta esegui `./install.sh`: copia `treex` e `treex-gui` in `~/.local/bin` e aggiunge **TreeX** tra le applicazioni del desktop (icona compresa). Non servono i permessi di root.
+2. Dalla cartella estratta esegui `./install.sh`: copia `treex` e `treex-gui` in `~/.local/bin`, aggiunge **TreeX** tra le applicazioni del desktop (icona compresa) e installa le pagine `man` (`man treex`) e il completamento con Tab per bash, zsh e fish in `~/.local/share`. Non servono i permessi di root.
 
 ```bash
 tar xzf treex-<ver>-linux-x86_64.tar.gz

@@ -207,6 +207,10 @@ Ogni pannello (Dev-Junk, inspector, Tipi di file, Duplicati, Lista dei file, Cos
 
 TreeX misura quanto lavora la scheda grafica a ogni frame. Se una mappa molto grande è troppo pesante per la GPU (tipicamente una grafica integrata Intel con centinaia di migliaia di blocchi), riduce da sola l'antialiasing dei bordi (4× → 2× → 1×) per restare fluida, e lo ripristina sulle mappe più piccole. Sulle GPU potenti (Apple Silicon, NVIDIA, AMD) non cambia nulla: la grafica resta al massimo. Su una Intel UHD 620 una mappa di 143.000 blocchi gira a 60 fps sia in 2D sia in 2.5D.
 
+### Il comando `treex` nel terminale
+
+**⌘K → Installa il comando treex nel terminale** rende la riga di comando inclusa nell'app un comando del sistema, con le pagine `man` e il completamento con Tab: su macOS collega `/usr/local/bin/treex` alla copia dentro l'app (macOS chiede la password se serve), su Windows aggiunge al PATH dell'utente la cartella `bin` accanto a `TreeX.exe`, su Linux (AppImage) crea `~/.local/bin/treex`. Con Flatpak l'app spiega il comando da usare (`flatpak run --command=treex dev.treex.TreeX`). Poi, in un nuovo terminale, `treex tui` esplora una cartella come l'app ma nel terminale (vedi [Riga di comando](cli.md#treex-tui-path)).
+
 ### Aggiornare TreeX
 
 In basso a destra nella home c'è **Aggiornamenti** (anche ⌘K → *Cerca aggiornamenti*, da qualsiasi schermata). TreeX non controlla mai da solo: solo a quel clic chiede a GitHub qual è l'ultima release.

@@ -33,7 +33,7 @@ TreeX è passato dalla 0.10.2 direttamente alla **1.0.0** perché lo riteniamo f
 - **Sicuro per costruzione**: tutto va nel Cestino per default, ogni elemento viene ricontrollato un istante prima di toccarlo, le cartelle di sistema e della home sono sempre protette, ogni pulizia è registrata.
 - **Rodato dall'uso reale**: le versioni 0.10.x hanno corretto ciò che è emerso usando TreeX ogni giorno (layout sugli schermi piccoli, chiusura dei pannelli, accesso completo al disco, avanzamento durante l'aggiornamento di un'analisi).
 
-1.0 **non** significa che tutto è finito. La firma del codice (così macOS e Windows smettono di chiedere conferma al primo avvio), i pacchetti per i negozi di app, un'interfaccia da terminale e alcuni miglioramenti del motore continuano nelle versioni 1.x. Dalla 1.0 in poi, all'interno della 1.x, la riga di comando e il formato dei file di analisi cambiano solo in modo compatibile.
+1.0 **non** significa che tutto è finito. La firma del codice (così macOS e Windows smettono di chiedere conferma al primo avvio), i pacchetti per i negozi di app e alcuni miglioramenti del motore continuano nelle versioni 1.x; l'interfaccia da terminale, `treex tui`, è arrivata con la 1.3. Dalla 1.0 in poi, all'interno della 1.x, la riga di comando e il formato dei file di analisi cambiano solo in modo compatibile.
 
 ## Prestazioni
 
@@ -120,6 +120,32 @@ Premi `T` per vedere dove va lo spazio **per estensione**: clicca un tipo e nell
 |---|---|
 | ![](docs/images/gui-files.png) | ![](docs/images/gui-delete-confirm.png) |
 
+## Nel terminale: `treex tui`
+
+Stesso motore e stessa sicurezza dell'app, senza finestre: `treex tui` esplora una cartella in modo interattivo in qualsiasi terminale di macOS, Windows e Linux, e via SSH su un server senza interfaccia grafica.
+
+<p align="center"><img src="docs/images/tui-home.png" width="820" alt="treex tui: le cartelle per dimensione"></p>
+
+- **Cartelle** per dimensione, con barre, numero di elementi ed età. Frecce per muoversi, → apre, ← torna indietro; funziona anche il mouse.
+- **Dev-Junk** (`2`): tutti gli artefatti di build e le cache che si possono ricreare (`node_modules`, `target`, `.venv`, DerivedData, cache di npm, Cargo e Gradle…), con l'ecosistema e da quanto il progetto è fermo. Spazio per selezionarli, `d` per spostarli nel Cestino.
+- **Tipi di file** (`3`): lo spazio per estensione, con i colori dell'app.
+- **Eliminazione sicura**: `d` nel Cestino, `D` definitiva, sempre dopo una conferma; ogni elemento viene ricontrollato un istante prima, e le cartelle di sistema protette non vengono mai toccate.
+- Lo stile dell'app: colori Aurora a 24 bit dove il terminale li supporta, la tavolozza a 256 colori altrimenti, nessun colore con `NO_COLOR`.
+
+| Dev-Junk (`2`) | Eliminazione con conferma |
+|---|---|
+| ![](docs/images/tui-devjunk.png) | ![](docs/images/tui-confirm.png) |
+
+### `treex` come comando di sistema
+
+| Sistema | Come |
+|---|---|
+| **macOS** | Con Homebrew il cask installa anche `treex`. Dal DMG: nell'app, ⌘K → *Installa il comando treex nel terminale*. Solo riga di comando: `treex-cli-<versione>-macos-universal.tar.gz` → `./install.sh` |
+| **Linux** | Debian, Ubuntu: `sudo apt install ./treex_<versione>_amd64.deb`. Qualsiasi distribuzione, server compresi: `treex-cli-<versione>-linux-x86_64.tar.gz` → `./install.sh` (`--user`: senza root). AppImage: Ctrl+K → *Installa il comando treex* nell'app |
+| **Windows** | `treex-cli-<versione>-windows-x64.zip` → doppio clic su `install.cmd` (aggiunge `treex` al PATH, senza amministratore). Dall'app: Ctrl+K → *Installa il comando treex* |
+
+Poi `man treex` (una pagina per comando: `man treex-tui`, `man treex-clean`…) o `treex --help`, e il completamento con Tab in bash, zsh, fish e PowerShell (`treex completions <shell>`).
+
 ## Installazione
 
 Dalle [release](https://github.com/kikoz85/TreeX/releases):
@@ -127,6 +153,7 @@ Dalle [release](https://github.com/kikoz85/TreeX/releases):
 - **macOS**: apri `TreeX-<versione>-macos-universal.dmg` e trascina **TreeX** in Applicazioni. La CLI `treex` è inclusa nell'app.
 - **Windows**: estrai `TreeX-<versione>-windows-x64.zip` e avvia **TreeX.exe** (la CLI è `bin\treex.exe`). Da amministratore l'analisi di un disco intero legge la Master File Table ed è istantanea dalla seconda volta (journal USN).
 - **Linux**: `TreeX-<versione>-x86_64.AppImage` (un file solo, gira sulla maggior parte delle distribuzioni), `TreeX-<versione>-x86_64.flatpak` (`flatpak install --user …`), oppure `treex-<versione>-linux-x86_64.tar.gz` con `./install.sh` (senza root).
+- **Solo riga di comando** (anche per i server): `treex-cli-<versione>-…` per ogni sistema e `treex_<versione>_amd64.deb`, vedi [`treex` come comando di sistema](#treex-come-comando-di-sistema).
 
 Primo avvio, Homebrew e disinstallazione: [docs/user/install.md](docs/user/install.md).
 
@@ -135,6 +162,7 @@ Primo avvio, Homebrew e disinstallazione: [docs/user/install.md](docs/user/insta
 ## Uso rapido
 
 ```bash
+treex tui ~                      # esplora in modo interattivo (frecce, ? per tutti i tasti)
 treex scan ~/Developer -d 2
 treex dev ~
 treex types ~                    # spazio per estensione
