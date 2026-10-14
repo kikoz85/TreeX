@@ -127,31 +127,76 @@ Press `T` to see where the space goes **by file extension**. Click a type and on
 |---|---|
 | ![](docs/images/gui-files.png) | ![](docs/images/gui-delete-confirm.png) |
 
-## In the terminal: `treex tui`
+## Command line: `treex`
 
-Same engine and same safety as the app, no window needed: `treex tui` explores a folder interactively in any terminal on macOS, Windows and Linux, and over SSH on a headless server.
+TreeX is also a complete command-line tool: the same engine, the same Dev-Aware rules and the same safety checks as the app, on macOS, Windows and Linux, and on headless servers over SSH. It ships inside every app package and on its own, installs as a system command, and comes with manual pages (`man treex`) and Tab completion.
+
+### Interactive: `treex tui`
 
 <p align="center"><img src="docs/images/tui-home.png" width="820" alt="treex tui: folders by size"></p>
 
-- **Folders** by size, with bars, item counts and age. Arrows move, → opens, ← goes back; the mouse works too.
+Explore a folder as in the app, inside the terminal:
+
+- **Folders** by size, with bars, item counts and age. Arrows move, → opens, ← goes back; the mouse works too (click, double click, wheel).
 - **Dev-Junk** (`2`): every build artifact and cache that can be rebuilt (`node_modules`, `target`, `.venv`, DerivedData, npm, Cargo and Gradle caches…), with its ecosystem and how long its project has been idle. Mark with space, `d` moves them to the Trash.
 - **File types** (`3`): the space by extension, in the app's colors.
 - **Safe deletion**: `d` to the Trash, `D` permanently, always after a confirmation; each item is checked again right before it goes, and protected system folders are never touched.
-- The app's look: Aurora colors in 24-bit where the terminal supports them, the 256-color palette otherwise, none with `NO_COLOR`.
+- **The app's look**: Aurora colors in 24-bit where the terminal supports them, the 256-color palette otherwise, none with `NO_COLOR`.
 
-| Dev-Junk (`2`) | Delete with confirmation |
+| Dev-Junk (`2`) | File types (`3`) |
 |---|---|
-| ![](docs/images/tui-devjunk.png) | ![](docs/images/tui-confirm.png) |
+| ![](docs/images/tui-devjunk.png) | ![](docs/images/tui-types.png) |
+| **Delete with confirmation** | **Every key (`?`)** |
+| ![](docs/images/tui-confirm.png) | ![](docs/images/tui-help.png) |
+
+| Key | Action |
+|---|---|
+| `↑` `↓` `j` `k` · `PgUp` `PgDn` · `g` `G` | move · page · first, last |
+| `→` `Enter` / `←` `Backspace` | open the folder / back to the parent |
+| `1` `2` `3` `Tab` | Folders · Dev-Junk · File types |
+| `space` · `Esc` | mark / unmark · clear the marks |
+| `d` · `D` | move to the Trash · delete permanently (both ask first) |
+| `/` · `s` | filter by name · sort by size, name, items or date |
+| `r` · `R` | update the analysis · rescan everything |
+| `?` · `q` | every key · quit |
+
+### Reports and scripts
+
+Every analysis is also a command that prints a report; most of them add `--json` for scripts. Like the app, a command reuses the previous analysis of the same folder, so the second run takes a fraction of a second.
+
+<p align="center"><img src="docs/images/cli-dev.png" width="820" alt="treex dev: build artifacts and caches by ecosystem"></p>
+
+| `treex scan` | `treex clean` (dry run) |
+|---|---|
+| ![](docs/images/cli-scan.png) | ![](docs/images/cli-clean.png) |
+
+| Command | What it does |
+|---|---|
+| `treex tui [PATH]` | the interactive explorer above |
+| `treex scan [PATH]` | the largest entries, `-d` levels deep, `-n` per level; `--json` |
+| `treex dev [PATH]` | build artifacts and caches you can regenerate, by ecosystem; `--json` |
+| `treex clean [PATH]` | the cleaning plan (dry run); `--apply` moves to the Trash; `--permanent`, `--min-age DAYS`, `--ecosystem`, `--rule` |
+| `treex types [PATH]` | space by file extension; `--json` |
+| `treex dupes [PATH]` | duplicate files; `--delete --keep oldest\|newest\|shortest` removes the extra copies (dry run unless `--apply`); `--json` |
+| `treex export [PATH]` | every file as CSV or JSON (`-o`, `--format`), filtered with `--name`, `--ext`, `--min-size`, `--older-than`… |
+| `treex delete PATH…` | to the Trash (or `--permanent`) with safety checks |
+| `treex diff [PATH]` | what changed since the previous analysis, or `--against` a saved one; `--json` |
+| `treex volumes` | the mounted disks with their space; `--json` |
+| `treex history` | the cleanings done, with their space |
+| `treex rules list \| check \| test` | inspect, validate and debug the Dev-Aware rules |
+| `treex completions SHELL` | the Tab-completion script for bash, zsh, fish, PowerShell, elvish |
+
+Every command is described in its own manual page (`man treex-scan`, `man treex-clean`…) and in `treex <command> --help`; the full reference, in Italian, is in [docs/user/cli.md](docs/user/cli.md).
 
 ### `treex` as a system command
 
 | System | How |
 |---|---|
-| **macOS** | With Homebrew the cask installs `treex` too. From the DMG: in the app, ⌘K → *Install the treex command in the terminal*. Command line only: `treex-cli-<version>-macos-universal.tar.gz` → `./install.sh` |
-| **Linux** | Debian, Ubuntu: `sudo apt install ./treex_<version>_amd64.deb`. Any distribution, servers included: `treex-cli-<version>-linux-x86_64.tar.gz` → `./install.sh` (`--user`: no root). AppImage: Ctrl+K → *Install the treex command* in the app |
+| **macOS** | With Homebrew the cask installs `treex` too, with its manual pages and completions. From the DMG: in the app, ⌘K → *Install the treex command in the terminal*. Command line only: `treex-cli-<version>-macos-universal.tar.gz` → `./install.sh` |
+| **Linux** | Debian, Ubuntu: `sudo apt install ./treex_<version>_amd64.deb`. Fedora, RHEL, openSUSE: `sudo dnf install ./treex-<version>-1.x86_64.rpm`. Any distribution, servers included: `treex-cli-<version>-linux-x86_64.tar.gz` → `./install.sh` (`--user`: no root). AppImage: Ctrl+K → *Install the treex command* in the app |
 | **Windows** | `treex-cli-<version>-windows-x64.zip` → double-click `install.cmd` (adds `treex` to your PATH, no administrator). From the app: Ctrl+K → *Install the treex command* |
 
-Then `man treex` (one page per command: `man treex-tui`, `man treex-clean`…) or `treex --help`, and Tab completion in bash, zsh, fish and PowerShell (`treex completions <shell>`).
+Then `man treex` (macOS, Linux) or `treex --help`, and Tab completion in bash, zsh, fish and PowerShell. To remove it: `./install.sh --uninstall`, `sudo apt remove treex`, `sudo dnf remove treex`, `install.cmd -Uninstall`. The copy inside the app updates with the app; the standalone packages update by installing the new version over the old one.
 
 ## Install
 
@@ -160,7 +205,7 @@ From the [releases](https://github.com/kikoz85/TreeX/releases):
 - **macOS**: open `TreeX-<version>-macos-universal.dmg`, drag **TreeX** into Applications. The `treex` command-line tool ships inside the app.
 - **Windows**: unzip `TreeX-<version>-windows-x64.zip` and run **TreeX.exe** (the command-line tool is `bin\treex.exe`). Run as administrator for the fastest whole-drive analysis (Master File Table) and instant re-analysis (USN journal).
 - **Linux**: `TreeX-<version>-x86_64.AppImage` (one file, runs on most distributions), `TreeX-<version>-x86_64.flatpak` (`flatpak install --user …`), or `treex-<version>-linux-x86_64.tar.gz` with `./install.sh` (no root needed).
-- **Command line only** (servers too): `treex-cli-<version>-…` for each system and `treex_<version>_amd64.deb`, see [`treex` as a system command](#treex-as-a-system-command).
+- **Command line only** (servers too): `treex-cli-<version>-…` for each system, `treex_<version>_amd64.deb` and `treex-<version>-1.x86_64.rpm`, see [`treex` as a system command](#treex-as-a-system-command).
 
 First-launch steps, Homebrew and uninstalling: [docs/user/install.md](docs/user/install.md).
 

@@ -92,7 +92,7 @@ Tre formati, stessa app:
 | **Flatpak** (`TreeX-<ver>-x86_64.flatpak`) | chi usa Flatpak (Fedora Silverblue, Linux Mint, elementary…) | aggiornamenti e runtime gestiti da Flatpak; vedi le note sulla sandbox qui sotto |
 | **Archivio** (`treex-<ver>-linux-x86_64.tar.gz`) | chi vuole `treex` e l'app nella propria home | `install.sh` senza root |
 
-Solo la **riga di comando** (server, macchine senza interfaccia grafica): il pacchetto `treex_<ver>_amd64.deb` per Debian e Ubuntu (`sudo apt install ./treex_<ver>_amd64.deb`) oppure l'archivio `treex-cli-<ver>-linux-x86_64.tar.gz` con `./install.sh` per qualsiasi distribuzione; poi `treex tui` e `man treex`. Dettagli in [Installare `treex` come comando](cli.md#installare-treex-come-comando).
+Solo la **riga di comando** (server, macchine senza interfaccia grafica): il pacchetto `treex_<ver>_amd64.deb` per Debian e Ubuntu (`sudo apt install ./treex_<ver>_amd64.deb`), il pacchetto `treex-<ver>-1.x86_64.rpm` per Fedora, RHEL e openSUSE (`sudo dnf install ./treex-<ver>-1.x86_64.rpm`) oppure l'archivio `treex-cli-<ver>-linux-x86_64.tar.gz` con `./install.sh` per qualsiasi distribuzione; poi `treex tui` e `man treex`. Dettagli in [Installare `treex` come comando](cli.md#installare-treex-come-comando).
 
 ### AppImage
 

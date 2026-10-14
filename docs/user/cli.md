@@ -7,14 +7,16 @@
 | Sistema | Come |
 |---|---|
 | **macOS** | **Homebrew** (`brew install --cask ./treex.rb`): installa anche `treex`, le pagine `man` e i completamenti. Dal **DMG**: nell'app, ⌘K → *Installa il comando treex nel terminale* (collega `/usr/local/bin/treex` alla copia dentro l'app; macOS chiede la password se serve). **Solo riga di comando**: `treex-cli-<ver>-macos-universal.tar.gz`, poi `./install.sh` (in `/usr/local`; `--user` per `~/.local`) |
-| **Linux** | **Debian, Ubuntu**: `sudo apt install ./treex_<ver>_amd64.deb` (`/usr/bin/treex`, `man`, completamenti). **Qualsiasi distribuzione**: `treex-cli-<ver>-linux-x86_64.tar.gz`, poi `./install.sh` (`--user`: in `~/.local`, senza root). **AppImage**: nell'app, Ctrl+K → *Installa il comando treex* (crea `~/.local/bin/treex`). **Flatpak**: `flatpak run --command=treex dev.treex.TreeX` (conviene un alias) |
+| **Linux** | **Debian, Ubuntu**: `sudo apt install ./treex_<ver>_amd64.deb` (`/usr/bin/treex`, `man`, completamenti). **Fedora, RHEL, openSUSE**: `sudo dnf install ./treex-<ver>-1.x86_64.rpm` (o `zypper install`), stessi file. **Qualsiasi distribuzione**: `treex-cli-<ver>-linux-x86_64.tar.gz`, poi `./install.sh` (`--user`: in `~/.local`, senza root). **AppImage**: nell'app, Ctrl+K → *Installa il comando treex* (crea `~/.local/bin/treex`). **Flatpak**: `flatpak run --command=treex dev.treex.TreeX` (conviene un alias) |
 | **Windows** | `treex-cli-<ver>-windows-x64.zip`, poi doppio clic su `install.cmd`: copia `treex.exe` in `%LOCALAPPDATA%\Programs\TreeX CLI` e lo aggiunge al PATH dell'utente, senza amministratore (`install.cmd -Uninstall` per toglierlo). Dall'app: Ctrl+K → *Installa il comando treex* (aggiunge al PATH la cartella `bin` accanto a `TreeX.exe`) |
 
-Disinstallare: `./install.sh --uninstall` (con le stesse opzioni dell'installazione), `sudo apt remove treex`, `install.cmd -Uninstall`.
+Disinstallare: `./install.sh --uninstall` (con le stesse opzioni dell'installazione), `sudo apt remove treex`, `sudo dnf remove treex`, `install.cmd -Uninstall`.
+
+In una pipe (`treex scan ~ | head`) `treex` si ferma in silenzio quando il comando che legge ha finito, come gli altri strumenti Unix.
 
 **Manuale**: `man treex` (macOS e Linux) descrive tutti i comandi, con esempi, file e variabili d'ambiente; ogni comando ha la sua pagina: `man treex-tui`, `man treex-scan`, `man treex-clean`, `man treex-rules-check`… Ovunque: `treex --help`, `treex <comando> --help`.
 
-**Completamento con Tab** per bash, zsh e fish: installato da `install.sh`, dal pacchetto `.deb`, da Homebrew e dal comando dell'app. Altrimenti `treex completions <bash|zsh|fish|powershell|elvish>` stampa lo script; ad esempio in PowerShell aggiungi al profilo (`notepad $PROFILE`) la riga `. "$env:LOCALAPPDATA\Programs\TreeX CLI\treex-completion.ps1"` (il file lo copia `install.cmd`; non si chiama `treex.ps1` perché PowerShell lo eseguirebbe al posto di `treex.exe`).
+**Completamento con Tab** per bash, zsh e fish: installato da `install.sh`, dai pacchetti `.deb` e `.rpm`, da Homebrew e dal comando dell'app. Altrimenti `treex completions <bash|zsh|fish|powershell|elvish>` stampa lo script; ad esempio in PowerShell aggiungi al profilo (`notepad $PROFILE`) la riga `. "$env:LOCALAPPDATA\Programs\TreeX CLI\treex-completion.ps1"` (il file lo copia `install.cmd`; non si chiama `treex.ps1` perché PowerShell lo eseguirebbe al posto di `treex.exe`).
 
 ## `treex tui [PATH]`
 

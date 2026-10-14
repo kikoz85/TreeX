@@ -120,31 +120,76 @@ Premi `T` per vedere dove va lo spazio **per estensione**: clicca un tipo e nell
 |---|---|
 | ![](docs/images/gui-files.png) | ![](docs/images/gui-delete-confirm.png) |
 
-## Nel terminale: `treex tui`
+## Riga di comando: `treex`
 
-Stesso motore e stessa sicurezza dell'app, senza finestre: `treex tui` esplora una cartella in modo interattivo in qualsiasi terminale di macOS, Windows e Linux, e via SSH su un server senza interfaccia grafica.
+TreeX è anche uno strumento completo da riga di comando: stesso motore, stesse regole Dev-Aware e stessi controlli di sicurezza dell'app, su macOS, Windows e Linux, e sui server senza interfaccia grafica via SSH. È incluso in ogni pacchetto dell'app e c'è anche da solo, si installa come comando di sistema e ha le pagine di manuale (`man treex`) e il completamento con Tab.
+
+### Interattiva: `treex tui`
 
 <p align="center"><img src="docs/images/tui-home.png" width="820" alt="treex tui: le cartelle per dimensione"></p>
 
-- **Cartelle** per dimensione, con barre, numero di elementi ed età. Frecce per muoversi, → apre, ← torna indietro; funziona anche il mouse.
+Esplora una cartella come nell'app, dentro il terminale:
+
+- **Cartelle** per dimensione, con barre, numero di elementi ed età. Frecce per muoversi, → apre, ← torna indietro; funziona anche il mouse (clic, doppio clic, rotella).
 - **Dev-Junk** (`2`): tutti gli artefatti di build e le cache che si possono ricreare (`node_modules`, `target`, `.venv`, DerivedData, cache di npm, Cargo e Gradle…), con l'ecosistema e da quanto il progetto è fermo. Spazio per selezionarli, `d` per spostarli nel Cestino.
 - **Tipi di file** (`3`): lo spazio per estensione, con i colori dell'app.
 - **Eliminazione sicura**: `d` nel Cestino, `D` definitiva, sempre dopo una conferma; ogni elemento viene ricontrollato un istante prima, e le cartelle di sistema protette non vengono mai toccate.
-- Lo stile dell'app: colori Aurora a 24 bit dove il terminale li supporta, la tavolozza a 256 colori altrimenti, nessun colore con `NO_COLOR`.
+- **Lo stile dell'app**: colori Aurora a 24 bit dove il terminale li supporta, la tavolozza a 256 colori altrimenti, nessun colore con `NO_COLOR`.
 
-| Dev-Junk (`2`) | Eliminazione con conferma |
+| Dev-Junk (`2`) | Tipi di file (`3`) |
 |---|---|
-| ![](docs/images/tui-devjunk.png) | ![](docs/images/tui-confirm.png) |
+| ![](docs/images/tui-devjunk.png) | ![](docs/images/tui-types.png) |
+| **Eliminazione con conferma** | **Tutti i tasti (`?`)** |
+| ![](docs/images/tui-confirm.png) | ![](docs/images/tui-help.png) |
+
+| Tasto | Azione |
+|---|---|
+| `↑` `↓` `j` `k` · `PgUp` `PgDn` · `g` `G` | muoversi · pagina · primo, ultimo |
+| `→` `Invio` / `←` `Backspace` | aprire la cartella / tornare a quella superiore |
+| `1` `2` `3` `Tab` | Cartelle · Dev-Junk · Tipi di file |
+| `spazio` · `Esc` | selezionare / deselezionare · togliere le selezioni |
+| `d` · `D` | spostare nel Cestino · eliminare definitivamente (entrambi chiedono conferma) |
+| `/` · `s` | filtrare per nome · ordinare per dimensione, nome, elementi o data |
+| `r` · `R` | aggiornare l'analisi · rianalizzare tutto |
+| `?` · `q` | tutti i tasti · uscire |
+
+### Report e script
+
+Ogni analisi è anche un comando che stampa un report; quasi tutti hanno `--json` per gli script. Come l'app, un comando riusa l'analisi precedente della stessa cartella, quindi la seconda volta richiede una frazione di secondo.
+
+<p align="center"><img src="docs/images/cli-dev.png" width="820" alt="treex dev: artefatti di build e cache per ecosistema"></p>
+
+| `treex scan` | `treex clean` (prova) |
+|---|---|
+| ![](docs/images/cli-scan.png) | ![](docs/images/cli-clean.png) |
+
+| Comando | Cosa fa |
+|---|---|
+| `treex tui [PATH]` | l'esploratore interattivo qui sopra |
+| `treex scan [PATH]` | gli elementi più grandi, `-d` livelli di profondità, `-n` per livello; `--json` |
+| `treex dev [PATH]` | gli artefatti di build e le cache che si possono ricreare, per ecosistema; `--json` |
+| `treex clean [PATH]` | il piano di pulizia (prova); `--apply` sposta nel Cestino; `--permanent`, `--min-age GIORNI`, `--ecosystem`, `--rule` |
+| `treex types [PATH]` | lo spazio per estensione; `--json` |
+| `treex dupes [PATH]` | i file duplicati; `--delete --keep oldest\|newest\|shortest` elimina le copie in più (prova senza `--apply`); `--json` |
+| `treex export [PATH]` | tutti i file in CSV o JSON (`-o`, `--format`), filtrati con `--name`, `--ext`, `--min-size`, `--older-than`… |
+| `treex delete PATH…` | nel Cestino (o `--permanent`) con i controlli di sicurezza |
+| `treex diff [PATH]` | cosa è cambiato dall'analisi precedente, o rispetto a una salvata (`--against`); `--json` |
+| `treex volumes` | i dischi montati con il loro spazio; `--json` |
+| `treex history` | le pulizie fatte, con lo spazio |
+| `treex rules list \| check \| test` | esaminare, validare e capire le regole Dev-Aware |
+| `treex completions SHELL` | lo script del completamento con Tab per bash, zsh, fish, PowerShell, elvish |
+
+Ogni comando ha la sua pagina di manuale (`man treex-scan`, `man treex-clean`…) e `treex <comando> --help`; il riferimento completo è in [docs/user/cli.md](docs/user/cli.md).
 
 ### `treex` come comando di sistema
 
 | Sistema | Come |
 |---|---|
-| **macOS** | Con Homebrew il cask installa anche `treex`. Dal DMG: nell'app, ⌘K → *Installa il comando treex nel terminale*. Solo riga di comando: `treex-cli-<versione>-macos-universal.tar.gz` → `./install.sh` |
-| **Linux** | Debian, Ubuntu: `sudo apt install ./treex_<versione>_amd64.deb`. Qualsiasi distribuzione, server compresi: `treex-cli-<versione>-linux-x86_64.tar.gz` → `./install.sh` (`--user`: senza root). AppImage: Ctrl+K → *Installa il comando treex* nell'app |
+| **macOS** | Con Homebrew il cask installa anche `treex`, con le pagine di manuale e i completamenti. Dal DMG: nell'app, ⌘K → *Installa il comando treex nel terminale*. Solo riga di comando: `treex-cli-<versione>-macos-universal.tar.gz` → `./install.sh` |
+| **Linux** | Debian, Ubuntu: `sudo apt install ./treex_<versione>_amd64.deb`. Fedora, RHEL, openSUSE: `sudo dnf install ./treex-<versione>-1.x86_64.rpm`. Qualsiasi distribuzione, server compresi: `treex-cli-<versione>-linux-x86_64.tar.gz` → `./install.sh` (`--user`: senza root). AppImage: Ctrl+K → *Installa il comando treex* nell'app |
 | **Windows** | `treex-cli-<versione>-windows-x64.zip` → doppio clic su `install.cmd` (aggiunge `treex` al PATH, senza amministratore). Dall'app: Ctrl+K → *Installa il comando treex* |
 
-Poi `man treex` (una pagina per comando: `man treex-tui`, `man treex-clean`…) o `treex --help`, e il completamento con Tab in bash, zsh, fish e PowerShell (`treex completions <shell>`).
+Poi `man treex` (macOS, Linux) o `treex --help`, e il completamento con Tab in bash, zsh, fish e PowerShell. Per toglierlo: `./install.sh --uninstall`, `sudo apt remove treex`, `sudo dnf remove treex`, `install.cmd -Uninstall`. La copia dentro l'app si aggiorna con l'app; i pacchetti a sé si aggiornano installando la nuova versione sopra la vecchia.
 
 ## Installazione
 
@@ -153,7 +198,7 @@ Dalle [release](https://github.com/kikoz85/TreeX/releases):
 - **macOS**: apri `TreeX-<versione>-macos-universal.dmg` e trascina **TreeX** in Applicazioni. La CLI `treex` è inclusa nell'app.
 - **Windows**: estrai `TreeX-<versione>-windows-x64.zip` e avvia **TreeX.exe** (la CLI è `bin\treex.exe`). Da amministratore l'analisi di un disco intero legge la Master File Table ed è istantanea dalla seconda volta (journal USN).
 - **Linux**: `TreeX-<versione>-x86_64.AppImage` (un file solo, gira sulla maggior parte delle distribuzioni), `TreeX-<versione>-x86_64.flatpak` (`flatpak install --user …`), oppure `treex-<versione>-linux-x86_64.tar.gz` con `./install.sh` (senza root).
-- **Solo riga di comando** (anche per i server): `treex-cli-<versione>-…` per ogni sistema e `treex_<versione>_amd64.deb`, vedi [`treex` come comando di sistema](#treex-come-comando-di-sistema).
+- **Solo riga di comando** (anche per i server): `treex-cli-<versione>-…` per ogni sistema, `treex_<versione>_amd64.deb` e `treex-<versione>-1.x86_64.rpm`, vedi [`treex` come comando di sistema](#treex-come-comando-di-sistema).
 
 Primo avvio, Homebrew e disinstallazione: [docs/user/install.md](docs/user/install.md).
 
