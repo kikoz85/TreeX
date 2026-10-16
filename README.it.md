@@ -187,7 +187,7 @@ Ogni comando ha la sua pagina di manuale (`man treex-scan`, `man treex-clean`…
 |---|---|
 | **macOS** | Con Homebrew il cask installa anche `treex`, con le pagine di manuale e i completamenti. Dal DMG: nell'app, ⌘K → *Installa il comando treex nel terminale*. Solo riga di comando: `treex-cli-<versione>-macos-universal.tar.gz` → `./install.sh` |
 | **Linux** | Debian, Ubuntu: `sudo apt install ./treex_<versione>_amd64.deb`. Fedora, RHEL, openSUSE: `sudo dnf install ./treex-<versione>-1.x86_64.rpm`. Qualsiasi distribuzione, server compresi: `treex-cli-<versione>-linux-x86_64.tar.gz` → `./install.sh` (`--user`: senza root). AppImage: Ctrl+K → *Installa il comando treex* nell'app |
-| **Windows** | `treex-cli-<versione>-windows-x64.zip` → doppio clic su `install.cmd` (aggiunge `treex` al PATH, senza amministratore). Dall'app: Ctrl+K → *Installa il comando treex* |
+| **Windows** | L'installer dell'app (`TreeX-<versione>-windows-x64-setup.exe`) aggiunge `treex` al PATH (un'opzione, attiva per default). Solo riga di comando: `treex-cli-<versione>-windows-x64.zip` → doppio clic su `install.cmd` (aggiunge `treex` al PATH, senza amministratore). Con lo zip portatile: Ctrl+K → *Installa il comando treex* nell'app |
 
 Poi `man treex` (macOS, Linux) o `treex --help`, e il completamento con Tab in bash, zsh, fish e PowerShell. Per toglierlo: `./install.sh --uninstall`, `sudo apt remove treex`, `sudo dnf remove treex`, `install.cmd -Uninstall`. La copia dentro l'app si aggiorna con l'app; i pacchetti a sé si aggiornano installando la nuova versione sopra la vecchia.
 
@@ -196,7 +196,7 @@ Poi `man treex` (macOS, Linux) o `treex --help`, e il completamento con Tab in b
 Dalle [release](https://github.com/kikoz85/TreeX/releases):
 
 - **macOS**: apri `TreeX-<versione>-macos-universal.dmg` e trascina **TreeX** in Applicazioni. La CLI `treex` è inclusa nell'app.
-- **Windows**: estrai `TreeX-<versione>-windows-x64.zip` e avvia **TreeX.exe** (la CLI è `bin\treex.exe`). Da amministratore l'analisi di un disco intero legge la Master File Table ed è istantanea dalla seconda volta (journal USN).
+- **Windows**: avvia `TreeX-<versione>-windows-x64-setup.exe`: installa TreeX per il tuo utente, senza amministratore, con la voce nel menu Start, il comando `treex` nel PATH se lasci l'opzione e il disinstallatore in Impostazioni → App. Preferisci una copia portatile? Estrai `TreeX-<versione>-windows-x64.zip` e avvia **TreeX.exe** (la CLI è `bin\treex.exe`). Da amministratore l'analisi di un disco intero legge la Master File Table ed è istantanea dalla seconda volta (journal USN).
 - **Linux**: `TreeX-<versione>-x86_64.AppImage` (un file solo, gira sulla maggior parte delle distribuzioni), `TreeX-<versione>-x86_64.flatpak` (`flatpak install --user …`), oppure `treex-<versione>-linux-x86_64.tar.gz` con `./install.sh` (senza root).
 - **Solo riga di comando** (anche per i server): `treex-cli-<versione>-…` per ogni sistema, `treex_<versione>_amd64.deb` e `treex-<versione>-1.x86_64.rpm`, vedi [`treex` come comando di sistema](#treex-come-comando-di-sistema).
 

@@ -56,8 +56,9 @@ Trascina TreeX.app nel Cestino. Dati creati da TreeX (tutti facoltativi):
 
 ## Windows
 
-1. Scarica `TreeX-<ver>-windows-x64.zip` ed estrailo dove preferisci (per esempio in `C:\Program Files\TreeX` o nella tua cartella utente).
-2. Avvia **TreeX.exe**. Per averlo nel menu Start: tasto destro su `TreeX.exe` → *Aggiungi a Start*.
+**Con l'installer** (consigliato): scarica `TreeX-<ver>-windows-x64-setup.exe` e avvialo. Non servono permessi di amministratore: TreeX si installa per il tuo utente in `%LOCALAPPDATA%\Programs\TreeX`, con la voce nel menu Start, l'icona sul desktop se la scegli e, se lasci spuntata l'opzione, il comando `treex` nel PATH (da usare in qualsiasi terminale: `treex tui`). Compare in **Impostazioni → App → App installate**, da dove si disinstalla. L'installer parla italiano o inglese secondo la lingua di Windows; avviare la versione nuova sopra quella installata la aggiorna, mantenendo le scelte fatte.
+
+**Portatile, con lo zip**: scarica `TreeX-<ver>-windows-x64.zip`, estrailo dove preferisci (per esempio nella tua cartella utente o su una chiavetta) e avvia **TreeX.exe**. Per averlo nel menu Start: tasto destro su `TreeX.exe` → *Aggiungi a Start*.
 
 La prima volta Windows SmartScreen può mostrare "Windows ha protetto il PC" (l'eseguibile non è firmato con un certificato di firma del codice): **Ulteriori informazioni → Esegui comunque**. Serve una volta sola.
 
@@ -68,12 +69,12 @@ La prima volta Windows SmartScreen può mostrare "Windows ha protetto il PC" (l'
 **Verificare il download** (PowerShell):
 
 ```powershell
-Get-FileHash -Algorithm SHA256 TreeX-<ver>-windows-x64.zip
+Get-FileHash -Algorithm SHA256 TreeX-<ver>-windows-x64-setup.exe
 ```
 
 e confronta con `SHA256SUMS-windows`.
 
-**Disinstallare**: elimina la cartella di TreeX. Dati creati da TreeX (tutti facoltativi):
+**Disinstallare**: installato con l'installer, da **Impostazioni → App → App installate → TreeX → Disinstalla** (toglie anche la voce del PATH; alla fine chiede se eliminare anche analisi, storico e impostazioni). Con lo zip, elimina la cartella di TreeX. Dati creati da TreeX (tutti facoltativi):
 
 | Percorso | Contenuto |
 |---|---|
