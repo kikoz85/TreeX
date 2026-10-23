@@ -163,6 +163,8 @@ Esempio reale (home dello sviluppatore, 4,86M di elementi):
 
 `stateful ⚠` indica che la cartella potrebbe contenere modifiche manuali (per esempio un virtualenv): da verificare prima di cancellarla.
 
+Su macOS, quando un artefatto è fatto di **cloni APFS** (i simulatori di Xcode, copie fatte con `cp -c`), eliminarlo libera solo la parte che non condivide: `treex dev` lo dice con una riga "≥ X really freed" sotto il totale e una colonna `FREES ≥` (nel JSON `freeable_bytes`, `null` fuori da macOS), calcolate solo per gli artefatti trovati.
+
 ## `treex clean [PATH]`
 
 Pulisce gli artefatti trovati da `treex dev`, in sicurezza. **Senza `--apply` non tocca nulla** e mostra solo il piano (dry run).
