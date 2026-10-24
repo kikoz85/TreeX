@@ -80,7 +80,7 @@ Quando selezioni un artefatto, l'inspector mostra un **banner corallo** con la r
 
 ![Inspector di un artefatto](../images/gui-reclaim-inspector.png)
 
-Su macOS, se gli artefatti contengono **cloni APFS** (simulatori di Xcode, copie con `cp -c`), la pillola e il pannello Dev-Junk dicono anche quanto si libera almeno ("2,4 GiB recuperabili (almeno 20 MiB)"): il resto è condiviso con altri file e resta sul disco. Il calcolo avviene in background, dopo l'analisi.
+Su macOS, se gli artefatti contengono **cloni APFS** (simulatori di Xcode, copie con `cp -c`), la pillola e il pannello Dev-Junk dicono anche quanto si libera almeno ("2,4 GiB recuperabili (almeno 20 MiB)"): il resto è condiviso con altri file e resta sul disco. Se alcuni file sono cloni l'uno dell'altro, eliminati insieme liberano anche i blocchi che condividono: TreeX lo dice (*forse di più*). Il calcolo avviene in background, dopo l'analisi. Dopo un'eliminazione definitiva il riepilogo dice quanto si è liberato almeno.
 
 ### Pulire in sicurezza
 
