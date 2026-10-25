@@ -11,7 +11,7 @@
 
 TreeX scans millions of files in seconds using each operating system's native APIs. It recognizes the space wasted by `node_modules`, `target/`, `DerivedData`, `.venv`, and Gradle or package-manager caches. It shows everything as a 2D / 2.5D isometric treemap that you can explore as well as read.
 
-> **TreeX 1.0 runs on macOS, Windows and Linux.** macOS 13 Ventura or later (Apple Silicon and Intel), Windows 10/11 (x64), Linux (x86_64). Same app, same views, same commands everywhere.
+> **TreeX 1.0 runs on macOS, Windows and Linux.** macOS 13 Ventura or later (Apple Silicon and Intel), Windows 10/11 (x64 and ARM64), Linux (x86_64 and ARM64). Same app, same views, same commands everywhere.
 
 ### Dev-Aware: find the space you can take back
 
@@ -206,6 +206,7 @@ From the [releases](https://github.com/kikoz85/TreeX/releases):
 - **Windows**: run `TreeX-<version>-windows-x64-setup.exe`: it installs TreeX for your user, no administrator needed, with a Start menu entry, the `treex` command in your PATH if you keep that option, and an uninstaller in Settings → Apps. Prefer a portable copy? Unzip `TreeX-<version>-windows-x64.zip` and run **TreeX.exe** (the command-line tool is `bin\treex.exe`). Run as administrator for the fastest whole-drive analysis (Master File Table) and instant re-analysis (USN journal).
 - **Linux**: `TreeX-<version>-x86_64.AppImage` (one file, runs on most distributions), `TreeX-<version>-x86_64.flatpak` (`flatpak install --user …`), or `treex-<version>-linux-x86_64.tar.gz` with `./install.sh` (no root needed).
 - **Command line only** (servers too): `treex-cli-<version>-…` for each system, `treex_<version>_amd64.deb` and `treex-<version>-1.x86_64.rpm`, see [`treex` as a system command](#treex-as-a-system-command).
+- **ARM64** (Windows on ARM, Raspberry Pi 4/5, ARM servers and virtual machines): the same files with `arm64` instead of `x64` on Windows, `aarch64` instead of `x86_64` on Linux (`arm64` for the `.deb`). They run natively, and the app updates itself on ARM too.
 
 First-launch steps, Homebrew and uninstalling: [docs/user/install.md](docs/user/install.md).
 

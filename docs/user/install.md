@@ -1,6 +1,6 @@
 # Installazione
 
-> macOS 13 Ventura o successivo (Apple Silicon e Intel, binario universale) · Windows 10/11 x64 · Linux x86_64 (glibc). I file della release hanno la versione nel nome (`<ver>`).
+> macOS 13 Ventura o successivo (Apple Silicon e Intel, binario universale) · Windows 10/11 x64 e ARM64 · Linux x86_64 e ARM64 (glibc). I file della release hanno la versione nel nome (`<ver>`).
 
 - [macOS](#macos) · [Windows](#windows) · [Linux](#linux)
 
@@ -56,6 +56,8 @@ Trascina TreeX.app nel Cestino. Dati creati da TreeX (tutti facoltativi):
 
 ## Windows
 
+> **PC con processore ARM** (Snapdragon, Windows on ARM): scarica i file con `arm64` al posto di `x64` nel nome (`TreeX-<ver>-windows-arm64-setup.exe`, `TreeX-<ver>-windows-arm64.zip`, `treex-cli-<ver>-windows-arm64.zip`): girano in nativo, più veloci della versione x64 emulata. Tutto il resto è uguale. Se hai già installato la versione x64, l'installer ARM64 la aggiorna sul posto.
+
 **Con l'installer** (consigliato): scarica `TreeX-<ver>-windows-x64-setup.exe` e avvialo. Non servono permessi di amministratore: TreeX si installa per il tuo utente in `%LOCALAPPDATA%\Programs\TreeX`, con la voce nel menu Start, l'icona sul desktop se la scegli e, se lasci spuntata l'opzione, il comando `treex` nel PATH (da usare in qualsiasi terminale: `treex tui`). Compare in **Impostazioni → App → App installate**, da dove si disinstalla. L'installer parla italiano o inglese secondo la lingua di Windows; avviare la versione nuova sopra quella installata la aggiorna, mantenendo le scelte fatte.
 
 **Portatile, con lo zip**: scarica `TreeX-<ver>-windows-x64.zip`, estrailo dove preferisci (per esempio nella tua cartella utente o su una chiavetta) e avvia **TreeX.exe**. Per averlo nel menu Start: tasto destro su `TreeX.exe` → *Aggiungi a Start*.
@@ -84,6 +86,8 @@ e confronta con `SHA256SUMS-windows`.
 | `%APPDATA%\TreeX\` | regole Dev-Aware personalizzate, se create |
 
 ## Linux
+
+> **Processori ARM64** (Raspberry Pi 4/5 con sistema a 64 bit, server ARM, macchine virtuali su Mac con Apple Silicon): scarica i file con `aarch64` al posto di `x86_64` nel nome (`TreeX-<ver>-aarch64.AppImage`, `treex-<ver>-linux-aarch64.tar.gz`, `treex-cli-<ver>-linux-aarch64.tar.gz`, `treex-<ver>-1.aarch64.rpm`) e, per Debian e Ubuntu, `treex_<ver>_arm64.deb`. Stessi requisiti (glibc 2.28 o successiva), stessi comandi. Non sai quale ti serve? `uname -m` risponde `x86_64` o `aarch64`.
 
 Tre formati, stessa app:
 

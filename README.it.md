@@ -11,7 +11,7 @@
 
 TreeX scansiona milioni di file in pochi secondi usando le API native di ogni sistema operativo, riconosce lo spazio sprecato da `node_modules`, `target/`, `DerivedData`, `.venv`, cache Docker e Gradle, e lo mostra in una treemap 2D / 2.5D isometrica pensata per essere esplorata, non solo letta.
 
-> **TreeX 1.0 funziona su macOS, Windows e Linux.** macOS 13 Ventura o successivo (Apple Silicon e Intel), Windows 10/11 (x64), Linux (x86_64). Stessa app, stesse viste, stessi comandi ovunque.
+> **TreeX 1.0 funziona su macOS, Windows e Linux.** macOS 13 Ventura o successivo (Apple Silicon e Intel), Windows 10/11 (x64 e ARM64), Linux (x86_64 e ARM64). Stessa app, stesse viste, stessi comandi ovunque.
 
 ### Dev-Aware: trova lo spazio che puoi riprenderti
 
@@ -199,6 +199,7 @@ Dalle [release](https://github.com/kikoz85/TreeX/releases):
 - **Windows**: avvia `TreeX-<versione>-windows-x64-setup.exe`: installa TreeX per il tuo utente, senza amministratore, con la voce nel menu Start, il comando `treex` nel PATH se lasci l'opzione e il disinstallatore in Impostazioni → App. Preferisci una copia portatile? Estrai `TreeX-<versione>-windows-x64.zip` e avvia **TreeX.exe** (la CLI è `bin\treex.exe`). Da amministratore l'analisi di un disco intero legge la Master File Table ed è istantanea dalla seconda volta (journal USN).
 - **Linux**: `TreeX-<versione>-x86_64.AppImage` (un file solo, gira sulla maggior parte delle distribuzioni), `TreeX-<versione>-x86_64.flatpak` (`flatpak install --user …`), oppure `treex-<versione>-linux-x86_64.tar.gz` con `./install.sh` (senza root).
 - **Solo riga di comando** (anche per i server): `treex-cli-<versione>-…` per ogni sistema, `treex_<versione>_amd64.deb` e `treex-<versione>-1.x86_64.rpm`, vedi [`treex` come comando di sistema](#treex-come-comando-di-sistema).
+- **ARM64** (Windows on ARM, Raspberry Pi 4/5, server e macchine virtuali ARM): gli stessi file con `arm64` al posto di `x64` su Windows, `aarch64` al posto di `x86_64` su Linux (`arm64` per il `.deb`). Girano in nativo, e l'app si aggiorna da sola anche su ARM.
 
 Primo avvio, Homebrew e disinstallazione: [docs/user/install.md](docs/user/install.md).
 
