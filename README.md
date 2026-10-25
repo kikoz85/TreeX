@@ -11,7 +11,7 @@
 
 TreeX scans millions of files in seconds using each operating system's native APIs. It recognizes the space wasted by `node_modules`, `target/`, `DerivedData`, `.venv`, and Gradle or package-manager caches. It shows everything as a 2D / 2.5D isometric treemap that you can explore as well as read.
 
-> **TreeX 1.0 runs on macOS, Windows and Linux.** macOS 13 Ventura or later (Apple Silicon and Intel), Windows 10/11 (x64 and ARM64), Linux (x86_64 and ARM64). Same app, same views, same commands everywhere.
+> **TreeX runs on macOS, Windows and Linux, on Intel/AMD and ARM processors.** macOS 13 Ventura or later (Apple Silicon and Intel), Windows 10/11 (x64, and ARM64 on Windows 11), Linux (x86_64 and ARM64, Raspberry Pi 4/5 included). Native everywhere: same app, same views, same commands.
 
 ### Dev-Aware: find the space you can take back
 
@@ -23,17 +23,16 @@ Run `treex dev ~`, or press `4` in the app. `node_modules`, `target`, Flutter bu
 |---|---|---|
 | ![](docs/images/gui-home.png) | ![](docs/images/gui-zoom.png) | ![](docs/images/gui-palette.png) |
 
-## Why 1.0 (after 0.10.2)
+## What's new in 1.x
 
-TreeX jumped from 0.10.2 straight to **1.0.0** because we consider it working and stable on all three systems, not because a feature list was ticked off:
+- **1.5 · ARM64**: native builds for Linux ARM64 (Raspberry Pi 4/5, ARM servers, virtual machines on Apple Silicon Macs) and Windows on ARM, built and tested on ARM machines. The app updates itself on ARM too.
+- **1.4 · Windows installer and honest numbers for APFS clones**: a per-user installer for Windows (no administrator, optional `treex` in your PATH, uninstaller in Settings → Apps) next to the portable zip. On macOS, *Reclaim* tells how much cleaning really frees when files are APFS clones (Xcode simulators, `cp -c` copies), and whether they are clones of each other or of files you did not select.
+- **1.3 · `treex tui` and the command line everywhere**: TreeX in the terminal, interactive, over SSH too; the `treex` command as a system command on every OS (`.deb`, `.rpm`, standalone archives), with `man` pages and Tab completion.
+- **1.2 · Rotate the 2.5D city**: ↺ ↻ buttons, `Q` / `E`, right-drag or two fingers on the trackpad.
+- **1.1 · Updates from the app**: one click on *Updates* downloads the new version, checks its digital signature, installs it and restarts TreeX.
+- **1.0 · Stable on all three systems**: the same app, views and safety rules on macOS, Windows and Linux, the whole test suite passing on real machines (real-GPU rendering included), and the fastest of every tool we compared on each system. Everything goes to the Trash by default and every item is checked again right before it is touched.
 
-- **Same app everywhere**: macOS, Windows and Linux have the same views, the same commands and the same safety rules, built and tested on real machines (a Mac, a Windows 11 PC, a Debian 13 machine), not only in CI.
-- **Tested**: the whole test suite passes on all three systems, including real-GPU rendering tests, incremental updates compared against full scans, and deletion tests that try to trick TreeX (swapped folders, symlinks, protected paths).
-- **Fast, measured**: the fastest of every tool we compared on each system, with the numbers below.
-- **Safe by design**: everything goes to the Trash by default, every item is checked again right before it is touched, system and home folders are always protected, and every cleaning is logged.
-- **Hardened by real use**: the 0.10.x releases fixed what came up while using TreeX every day (layout on small screens, panel closing, Full Disk Access, progress while updating an analysis).
-
-1.0 does **not** mean everything is done. Code signing (so macOS and Windows stop asking for confirmation on first launch), app-store packages and a few engine improvements continue in the 1.x releases; the terminal UI, `treex tui`, arrived in 1.3. From 1.0 on, the command-line interface and the analysis file format change only in a compatible way within 1.x.
+Within 1.x the command-line interface and the analysis file format change only in a compatible way. Still to come in the next releases: code signing (so macOS and Windows stop asking for confirmation on first launch), app-store packages and a few engine improvements.
 
 ## Performance
 
@@ -193,20 +192,27 @@ Every command is described in its own manual page (`man treex-scan`, `man treex-
 | System | How |
 |---|---|
 | **macOS** | With Homebrew the cask installs `treex` too, with its manual pages and completions. From the DMG: in the app, ⌘K → *Install the treex command in the terminal*. Command line only: `treex-cli-<version>-macos-universal.tar.gz` → `./install.sh` |
-| **Linux** | Debian, Ubuntu: `sudo apt install ./treex_<version>_amd64.deb`. Fedora, RHEL, openSUSE: `sudo dnf install ./treex-<version>-1.x86_64.rpm`. Any distribution, servers included: `treex-cli-<version>-linux-x86_64.tar.gz` → `./install.sh` (`--user`: no root). AppImage: Ctrl+K → *Install the treex command* in the app |
-| **Windows** | The app's installer (`TreeX-<version>-windows-x64-setup.exe`) adds `treex` to your PATH (an option, on by default). Command line only: `treex-cli-<version>-windows-x64.zip` → double-click `install.cmd` (adds `treex` to your PATH, no administrator). With the portable zip: Ctrl+K → *Install the treex command* in the app |
+| **Linux** | (On ARM64: `arm64` instead of `amd64`, `aarch64` instead of `x86_64`.) Debian, Ubuntu: `sudo apt install ./treex_<version>_amd64.deb`. Fedora, RHEL, openSUSE: `sudo dnf install ./treex-<version>-1.x86_64.rpm`. Any distribution, servers included: `treex-cli-<version>-linux-x86_64.tar.gz` → `./install.sh` (`--user`: no root). AppImage: Ctrl+K → *Install the treex command* in the app |
+| **Windows** | (On ARM64: `arm64` instead of `x64`.) The app's installer (`TreeX-<version>-windows-x64-setup.exe`) adds `treex` to your PATH (an option, on by default). Command line only: `treex-cli-<version>-windows-x64.zip` → double-click `install.cmd` (adds `treex` to your PATH, no administrator). With the portable zip: Ctrl+K → *Install the treex command* in the app |
 
 Then `man treex` (macOS, Linux) or `treex --help`, and Tab completion in bash, zsh, fish and PowerShell. To remove it: `./install.sh --uninstall`, `sudo apt remove treex`, `sudo dnf remove treex`, `install.cmd -Uninstall`. The copy inside the app updates with the app; the standalone packages update by installing the new version over the old one.
 
 ## Install
 
-From the [releases](https://github.com/kikoz85/TreeX/releases):
+From the [releases](https://github.com/kikoz85/TreeX/releases), pick your system and processor:
 
-- **macOS**: open `TreeX-<version>-macos-universal.dmg`, drag **TreeX** into Applications. The `treex` command-line tool ships inside the app.
-- **Windows**: run `TreeX-<version>-windows-x64-setup.exe`: it installs TreeX for your user, no administrator needed, with a Start menu entry, the `treex` command in your PATH if you keep that option, and an uninstaller in Settings → Apps. Prefer a portable copy? Unzip `TreeX-<version>-windows-x64.zip` and run **TreeX.exe** (the command-line tool is `bin\treex.exe`). Run as administrator for the fastest whole-drive analysis (Master File Table) and instant re-analysis (USN journal).
-- **Linux**: `TreeX-<version>-x86_64.AppImage` (one file, runs on most distributions), `TreeX-<version>-x86_64.flatpak` (`flatpak install --user …`), or `treex-<version>-linux-x86_64.tar.gz` with `./install.sh` (no root needed).
-- **Command line only** (servers too): `treex-cli-<version>-…` for each system, `treex_<version>_amd64.deb` and `treex-<version>-1.x86_64.rpm`, see [`treex` as a system command](#treex-as-a-system-command).
-- **ARM64** (Windows on ARM, Raspberry Pi 4/5, ARM servers and virtual machines): the same files with `arm64` instead of `x64` on Windows, `aarch64` instead of `x86_64` on Linux (`arm64` for the `.deb`). They run natively, and the app updates itself on ARM too.
+| System | Processor | App | Command line only |
+|---|---|---|---|
+| **macOS** 13+ | Apple Silicon and Intel | `TreeX-<version>-macos-universal.dmg` | `treex-cli-<version>-macos-universal.tar.gz` |
+| **Windows** 10/11 | x64 (Intel, AMD) | `TreeX-<version>-windows-x64-setup.exe` (installer) or `TreeX-<version>-windows-x64.zip` (portable) | `treex-cli-<version>-windows-x64.zip` |
+| **Windows** 11 | ARM64 (Snapdragon) | `TreeX-<version>-windows-arm64-setup.exe` or `TreeX-<version>-windows-arm64.zip` | `treex-cli-<version>-windows-arm64.zip` |
+| **Linux** | x86_64 | `TreeX-<version>-x86_64.AppImage`, `TreeX-<version>-x86_64.flatpak`, `treex-<version>-linux-x86_64.tar.gz` | `treex_<version>_amd64.deb`, `treex-<version>-1.x86_64.rpm`, `treex-cli-<version>-linux-x86_64.tar.gz` |
+| **Linux** | ARM64 (Raspberry Pi 4/5, ARM servers) | `TreeX-<version>-aarch64.AppImage`, `TreeX-<version>-aarch64.flatpak`, `treex-<version>-linux-aarch64.tar.gz` | `treex_<version>_arm64.deb`, `treex-<version>-1.aarch64.rpm`, `treex-cli-<version>-linux-aarch64.tar.gz` |
+
+- **macOS**: open the DMG and drag **TreeX** into Applications. The `treex` command-line tool ships inside the app.
+- **Windows**: the installer sets TreeX up for your user, no administrator needed, with a Start menu entry, the `treex` command in your PATH if you keep that option, and an uninstaller in Settings → Apps. Prefer a portable copy? Unzip the zip and run **TreeX.exe** (the command-line tool is `bin\treex.exe`). Run as administrator for the fastest whole-drive analysis (Master File Table) and instant re-analysis (USN journal). On a Windows on ARM PC, the ARM64 installer replaces an x64 TreeX in place.
+- **Linux**: the AppImage is one file that runs on most distributions; the Flatpak installs with `flatpak install --user …`; the archive installs with `./install.sh` (no root needed). Everything needs glibc 2.28 or later. Not sure which processor you have? `uname -m` says `x86_64` or `aarch64`.
+- **Command line only** (servers too): see [`treex` as a system command](#treex-as-a-system-command).
 
 First-launch steps, Homebrew and uninstalling: [docs/user/install.md](docs/user/install.md).
 
