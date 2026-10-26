@@ -78,6 +78,18 @@ Oppure per singola regola, con `min_age_days` dentro la `[[rule]]`.
 - **regenerable**: si ricostruisce con un comando (mostrato in UI).
 - **stateful**: potrebbe contenere modifiche manuali. Mai preselezionata.
 
+## Cartelle fatte di cloni (macOS)
+
+Con `clones = "likely"` una regola dice che le sue cartelle sono spesso fatte di **cloni APFS**: occupano molto più di quanto libera eliminarle. Finché TreeX non ha misurato lo spazio che si libera davvero (un attimo dopo l'analisi, e mai nella mappa), accanto alla dimensione compare l'avviso *Su APFS potrebbe liberare molto meno: file clonati*. Le regole integrate lo usano per i dispositivi dei simulatori di Xcode, DerivedData e lo store di pnpm; non per le cache di npm, Homebrew o pip, che di solito non contengono cloni.
+
+```toml
+[[rule]]
+id = "mia.cache-clonata"
+path = ["~/Library/Caches/MioStrumento"]
+safety = "cache"
+clones = "likely"
+```
+
 ## Verificare le regole
 
 ```bash
