@@ -17,7 +17,7 @@ TreeX scansiona milioni di file in pochi secondi usando le API native di ogni si
 
 <p align="center"><img src="docs/images/gui-reclaim.png" width="820" alt="Modalità Reclaim: gli artefatti di build come torri corallo"></p>
 
-`treex dev ~` oppure, nell'app, il tasto `4`: `node_modules`, `target`, build Flutter, `DerivedData`, `vendor`, virtualenv e cache di npm/pip/Homebrew emergono come torri corallo, con il comando per ricrearli e da quanto il progetto è fermo. 16 ecosistemi di sviluppo riconosciuti, più le cache di sistema, regole personalizzabili in TOML.
+`treex dev ~` oppure, nell'app, il tasto `4`: `node_modules`, `target`, build Flutter, `DerivedData`, i cloni dei simulatori lasciati in `XCTestDevices` dai test di Xcode annullati o andati in crash, `vendor`, virtualenv e cache di npm/pip/Homebrew emergono come torri corallo, con il comando per ricrearli e da quanto il progetto è fermo. 16 ecosistemi di sviluppo riconosciuti, più le cache di sistema, regole personalizzabili in TOML.
 
 | Home | 2D con zoom sul dettaglio | Ricerca ⌘K |
 |---|---|---|

@@ -17,7 +17,7 @@ TreeX scans millions of files in seconds using each operating system's native AP
 
 <p align="center"><img src="docs/images/gui-reclaim.png" width="820" alt="Reclaim mode: build artifacts rise as coral towers"></p>
 
-Run `treex dev ~`, or press `4` in the app. `node_modules`, `target`, Flutter builds, `DerivedData`, `vendor`, virtualenvs, and the npm, pip, and Homebrew caches rise as coral towers. Each tower shows the command that recreates it and how long its project has been idle. TreeX recognizes 16 development ecosystems plus system caches, and you can customize the rules in TOML.
+Run `treex dev ~`, or press `4` in the app. `node_modules`, `target`, Flutter builds, `DerivedData`, the simulator clones that cancelled or crashed Xcode test runs leave in `XCTestDevices`, `vendor`, virtualenvs, and the npm, pip, and Homebrew caches rise as coral towers. Each tower shows the command that recreates it and how long its project has been idle. TreeX recognizes 16 development ecosystems plus system caches, and you can customize the rules in TOML.
 
 | Home | 2D with semantic zoom | Search everything (⌘K) |
 |---|---|---|

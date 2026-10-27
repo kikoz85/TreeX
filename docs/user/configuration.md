@@ -90,6 +90,23 @@ safety = "cache"
 clones = "likely"
 ```
 
+## Note e comandi
+
+`note` è una spiegazione breve mostrata accanto alla cartella (nell'app, nella TUI e da `treex dev`/`treex clean`); `command` è un comando che pulisce la cartella nel modo dello strumento che l'ha creata, mostrato con un pulsante **Copia comando**. TreeX non esegue mai `command`.
+
+```toml
+[[rule]]
+id = "mio.strumento"
+path = ["~/Library/Caches/MioStrumento"]
+safety = "cache"
+note = "Cache del mio strumento, ricreata al prossimo avvio."
+command = "mio-strumento cache clean"
+```
+
+## Simulatori di Xcode (macOS)
+
+`action = "simctl-delete-all"` è per le cartelle che contengono un insieme di simulatori di Xcode, come `~/Library/Developer/XCTestDevices`: con l'eliminazione definitiva TreeX usa `xcrun simctl --set <cartella> delete all`, che aggiorna anche l'elenco dei dispositivi, poi toglie le cartelle rimaste di dispositivi non più elencati. Lo fa solo se `xcrun` trova `simctl` e Xcode non deve ancora installare i suoi componenti, e salta la cartella se uno dei simulatori è acceso (un test in corso); altrimenti, e con il Cestino, svuota la cartella come `delete-children`. Vale solo per percorsi (`path`) dentro `~/Library/Developer/`.
+
 ## Verificare le regole
 
 ```bash
