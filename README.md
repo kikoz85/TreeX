@@ -25,6 +25,7 @@ Run `treex dev ~`, or press `4` in the app. `node_modules`, `target`, Flutter bu
 
 ## What's new in 1.x
 
+- **1.6 · Signed and notarized on macOS**: TreeX is signed with the developer's Developer ID and notarized by Apple: it opens with a double click, without Gatekeeper warnings, and keeps Full Disk Access across updates.
 - **1.5 · ARM64**: native builds for Linux ARM64 (Raspberry Pi 4/5, ARM servers, virtual machines on Apple Silicon Macs) and Windows on ARM, built and tested on ARM machines. The app updates itself on ARM too.
 - **1.4 · Windows installer and honest numbers for APFS clones**: a per-user installer for Windows (no administrator, optional `treex` in your PATH, uninstaller in Settings → Apps) next to the portable zip. On macOS, *Reclaim* tells how much cleaning really frees when files are APFS clones (Xcode simulators, `cp -c` copies), and whether they are clones of each other or of files you did not select.
 - **1.3 · `treex tui` and the command line everywhere**: TreeX in the terminal, interactive, over SSH too; the `treex` command as a system command on every OS (`.deb`, `.rpm`, standalone archives), with `man` pages and Tab completion.
@@ -32,7 +33,7 @@ Run `treex dev ~`, or press `4` in the app. `node_modules`, `target`, Flutter bu
 - **1.1 · Updates from the app**: one click on *Updates* downloads the new version, checks its digital signature, installs it and restarts TreeX.
 - **1.0 · Stable on all three systems**: the same app, views and safety rules on macOS, Windows and Linux, the whole test suite passing on real machines (real-GPU rendering included), and the fastest of every tool we compared on each system. Everything goes to the Trash by default and every item is checked again right before it is touched.
 
-Within 1.x the command-line interface and the analysis file format change only in a compatible way. Still to come in the next releases: code signing (so macOS and Windows stop asking for confirmation on first launch), app-store packages and a few engine improvements.
+Within 1.x the command-line interface and the analysis file format change only in a compatible way. Still to come in the next releases: code signing on Windows (so SmartScreen stops asking for confirmation on first launch), app-store packages and a few engine improvements.
 
 ## Performance
 
@@ -251,7 +252,7 @@ TreeX uses the network only when you click **Updates**: one request to GitHub fo
 
 TreeX is free. If it saved you some gigabytes (or some time), you can support its development on **[GitHub Sponsors](https://github.com/sponsors/kikoz85)**. Sponsorships pay for what a free app needs to grow:
 
-- code-signing certificates, so macOS and Windows stop asking for confirmation on first launch;
+- code signing: the Apple developer membership that signs and notarizes TreeX for macOS, and a certificate for Windows, so SmartScreen stops asking for confirmation on first launch;
 - app-store packages (Homebrew, winget, Flathub);
 - test machines for the three systems, and the time to keep TreeX the fastest of its kind.
 

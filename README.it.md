@@ -25,6 +25,7 @@ TreeX scansiona milioni di file in pochi secondi usando le API native di ogni si
 
 ## Le novità della 1.x
 
+- **1.6 · Firmato e notarizzato su macOS**: TreeX è firmato con il Developer ID dello sviluppatore e notarizzato da Apple: si apre con un doppio clic, senza avvisi di Gatekeeper, e mantiene l'accesso completo al disco dopo gli aggiornamenti.
 - **1.5 · ARM64**: versioni native per Linux ARM64 (Raspberry Pi 4/5, server ARM, macchine virtuali sui Mac con Apple Silicon) e Windows on ARM, costruite e provate su macchine ARM. L'app si aggiorna da sola anche su ARM.
 - **1.4 · Installer per Windows e numeri onesti con i cloni APFS**: un installer per utente su Windows (senza amministratore, `treex` nel PATH se vuoi, disinstallatore in Impostazioni → App) accanto allo zip portatile. Su macOS, *Recupera spazio* dice quanto libera davvero la pulizia quando i file sono cloni APFS (simulatori di Xcode, copie con `cp -c`), e se sono cloni tra loro o di file che non hai selezionato.
 - **1.3 · `treex tui` e la riga di comando ovunque**: TreeX nel terminale, interattivo, anche via SSH; il comando `treex` come comando di sistema su ogni sistema (`.deb`, `.rpm`, archivi a sé), con pagine `man` e completamento con Tab.
@@ -32,7 +33,7 @@ TreeX scansiona milioni di file in pochi secondi usando le API native di ogni si
 - **1.1 · Aggiornamenti dall'app**: un clic su *Aggiornamenti* scarica la nuova versione, ne verifica la firma digitale, la installa e riavvia TreeX.
 - **1.0 · Stabile su tutti e tre i sistemi**: la stessa app, le stesse viste e le stesse regole di sicurezza su macOS, Windows e Linux, l'intera suite di test che passa su macchine reali (compreso il rendering sulla GPU vera), e il più veloce di tutti gli strumenti confrontati su ogni sistema. Tutto va nel Cestino per default e ogni elemento viene ricontrollato un istante prima di toccarlo.
 
-All'interno della 1.x la riga di comando e il formato dei file di analisi cambiano solo in modo compatibile. Ancora da fare nelle prossime versioni: la firma del codice (così macOS e Windows smettono di chiedere conferma al primo avvio), i pacchetti per i negozi di app e alcuni miglioramenti del motore.
+All'interno della 1.x la riga di comando e il formato dei file di analisi cambiano solo in modo compatibile. Ancora da fare nelle prossime versioni: la firma del codice su Windows (così SmartScreen smette di chiedere conferma al primo avvio), i pacchetti per i negozi di app e alcuni miglioramenti del motore.
 
 ## Prestazioni
 
@@ -236,7 +237,7 @@ TreeX usa la rete solo quando clicchi **Aggiornamenti**: una richiesta a GitHub 
 
 TreeX è gratuito. Se ti ha fatto recuperare qualche gigabyte (o un po' di tempo), puoi sostenerne lo sviluppo su **[GitHub Sponsors](https://github.com/sponsors/kikoz85)**. Le sponsorizzazioni pagano ciò che serve a un'app gratuita per crescere:
 
-- i certificati di firma del codice, così macOS e Windows smettono di chiedere conferma al primo avvio;
+- la firma del codice: l'iscrizione da sviluppatore Apple che firma e notarizza TreeX per macOS, e un certificato per Windows, così SmartScreen smette di chiedere conferma al primo avvio;
 - i pacchetti per i negozi di app (Homebrew, winget, Flathub);
 - le macchine di prova per i tre sistemi, e il tempo per mantenere TreeX il più veloce della sua categoria.
 

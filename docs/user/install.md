@@ -14,12 +14,9 @@
 
 ### Primo avvio
 
-Le build distribuite senza firma Developer ID (firma *ad-hoc*) non sono notarizzate da Apple. Al primo avvio Gatekeeper mostra un avviso:
+Dalla 1.6.0 TreeX è **firmato con il Developer ID** dello sviluppatore (Enrico Fanucchi, team `8RPR7A547J`) e **notarizzato da Apple**: si apre con un doppio clic, senza avvisi di Gatekeeper, anche senza connessione (il controllo di Apple è "pinzato" nell'app e nel DMG). Lo stesso vale per la sola riga di comando `treex-cli-<ver>-macos-universal.tar.gz`.
 
-- **clic destro su TreeX.app → Apri**, poi conferma **Apri**; oppure
-- **Impostazioni di Sistema → Privacy e sicurezza → "Apri comunque"**.
-
-Serve una volta sola.
+Le versioni fino alla 1.5.2 avevano una firma *ad-hoc*: al primo avvio Gatekeeper chiedeva conferma (**clic destro su TreeX.app → Apri**, oppure **Impostazioni di Sistema → Privacy e sicurezza → "Apri comunque"**).
 
 Per analizzare l'intero disco serve l'**Accesso completo al disco**: TreeX lo segnala da solo quando trova cartelle che macOS non gli lascia leggere. Vedi [Permessi su macOS](macos-permissions.md).
 
