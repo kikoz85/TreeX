@@ -25,6 +25,7 @@ Run `treex dev ~`, or press `4` in the app. `node_modules`, `target`, Flutter bu
 
 ## What's new in 1.x
 
+- **1.6.1 · Safer cleaning (please update)**: TreeX never proposes folders inside installed software (app bundles, `node_modules` packages, Python and Homebrew installations), not even when the whole macOS disk is analyzed, nor folders of other users; what could not be deleted is shown with the reason.
 - **1.6 · Signed and notarized on macOS**: TreeX is signed with the developer's Developer ID and notarized by Apple: it opens with a double click, without Gatekeeper warnings, and keeps Full Disk Access across updates.
 - **1.5 · ARM64**: native builds for Linux ARM64 (Raspberry Pi 4/5, ARM servers, virtual machines on Apple Silicon Macs) and Windows on ARM, built and tested on ARM machines. The app updates itself on ARM too.
 - **1.4 · Windows installer and honest numbers for APFS clones**: a per-user installer for Windows (no administrator, optional `treex` in your PATH, uninstaller in Settings → Apps) next to the portable zip. On macOS, *Reclaim* tells how much cleaning really frees when files are APFS clones (Xcode simulators, `cp -c` copies), and whether they are clones of each other or of files you did not select.
@@ -211,7 +212,7 @@ From the [releases](https://github.com/kikoz85/TreeX/releases), pick your system
 | **Linux** | ARM64 (Raspberry Pi 4/5, ARM servers) | `TreeX-<version>-aarch64.AppImage`, `TreeX-<version>-aarch64.flatpak`, `treex-<version>-linux-aarch64.tar.gz` | `treex_<version>_arm64.deb`, `treex-<version>-1.aarch64.rpm`, `treex-cli-<version>-linux-aarch64.tar.gz` |
 
 - **macOS**: open the DMG and drag **TreeX** into Applications. The `treex` command-line tool ships inside the app.
-- **Windows**: the installer sets TreeX up for your user, no administrator needed, with a Start menu entry, the `treex` command in your PATH if you keep that option, and an uninstaller in Settings → Apps. Prefer a portable copy? Unzip the zip and run **TreeX.exe** (the command-line tool is `bin\treex.exe`). Run as administrator for the fastest whole-drive analysis (Master File Table) and instant re-analysis (USN journal). On a Windows on ARM PC, the ARM64 installer replaces an x64 TreeX in place.
+- **Windows**: the installer sets TreeX up for your user, no administrator needed, with a Start menu entry, the `treex` command in your PATH if you keep that option, and an uninstaller in Settings → Apps. Prefer a portable copy? Unzip the zip and run **TreeX.exe** (the command-line tool is `bin\treex.exe`). Run as administrator for the fastest whole-drive analysis (Master File Table) and instant re-analysis (USN journal). On a Windows on ARM PC, the ARM64 installer replaces an x64 TreeX in place. TreeX for Windows is not signed with a certificate yet, so on first launch SmartScreen may say *Windows protected your PC*: click **More info** → **Run anyway** (once; updates from the app do not ask again).
 - **Linux**: the AppImage is one file that runs on most distributions; the Flatpak installs with `flatpak install --user …`; the archive installs with `./install.sh` (no root needed). Everything needs glibc 2.28 or later. Not sure which processor you have? `uname -m` says `x86_64` or `aarch64`.
 - **Command line only** (servers too): see [`treex` as a system command](#treex-as-a-system-command).
 
