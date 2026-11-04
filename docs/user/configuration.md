@@ -46,6 +46,10 @@ path = ["~/Work/clienti"]
 
 TreeX non cerca artefatti di *progetto* dentro il software installato: lì `node_modules`, `dist` e `build` fanno parte del prodotto.
 
+- Per nome di cartella, ovunque: le app (`*.app`) e i framework (`*.framework`), i pacchetti scaricati (`node_modules`: un `dist/` lì dentro è il pacchetto stesso), le installazioni di Python (`python3.*`, `site-packages`), Homebrew (`Cellar`, `Caskroom`), conda, `AppData` (`inside_name` in `[[protect]]`, con i caratteri jolly).
+- Su macOS il disco intero si può analizzare come `/System/Volumes/Data`: le protezioni valgono anche lì (`/System/Volumes/Data/Applications` è `/Applications`).
+- Le cartelle di altri utenti non vengono proposte: solo il loro proprietario può eliminarle.
+
 - Cartelle nascoste: niente artefatti di progetto sotto `~/.qualcosa/…` (estensioni dell'editor, tool installati). Si può disattivare con:
 
   ```toml
