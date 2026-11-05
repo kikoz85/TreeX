@@ -12,6 +12,8 @@
 TreeX scans millions of files in seconds using each operating system's native APIs. It recognizes the space wasted by `node_modules`, `target/`, `DerivedData`, `.venv`, and Gradle or package-manager caches. It shows everything as a 2D / 2.5D isometric treemap that you can explore as well as read.
 
 > **TreeX runs on macOS, Windows and Linux, on Intel/AMD and ARM processors.** macOS 13 Ventura or later (Apple Silicon and Intel), Windows 10/11 (x64, and ARM64 on Windows 11), Linux (x86_64 and ARM64, Raspberry Pi 4/5 included). Native everywhere: same app, same views, same commands.
+>
+> **On Windows, get TreeX from the [Microsoft Store](https://apps.microsoft.com/detail/9PGTFHQ6RMHB)**: signed by Microsoft, no SmartScreen warning, automatic updates.
 
 ### Dev-Aware: find the space you can take back
 
@@ -25,6 +27,7 @@ Run `treex dev ~`, or press `4` in the app. `node_modules`, `target`, Flutter bu
 
 ## What's new in 1.x
 
+- **In the Microsoft Store**: [TreeX for Windows](https://apps.microsoft.com/detail/9PGTFHQ6RMHB) (x64 and ARM64), signed by Microsoft, updated by the Store, with the `treex` command in every terminal.
 - **1.6.1 · Safer cleaning (please update)**: TreeX never proposes folders inside installed software (app bundles, `node_modules` packages, Python and Homebrew installations), not even when the whole macOS disk is analyzed, nor folders of other users; what could not be deleted is shown with the reason.
 - **1.6 · Signed and notarized on macOS**: TreeX is signed with the developer's Developer ID and notarized by Apple: it opens with a double click, without Gatekeeper warnings, and keeps Full Disk Access across updates.
 - **1.5 · ARM64**: native builds for Linux ARM64 (Raspberry Pi 4/5, ARM servers, virtual machines on Apple Silicon Macs) and Windows on ARM, built and tested on ARM machines. The app updates itself on ARM too.
@@ -34,7 +37,7 @@ Run `treex dev ~`, or press `4` in the app. `node_modules`, `target`, Flutter bu
 - **1.1 · Updates from the app**: one click on *Updates* downloads the new version, checks its digital signature, installs it and restarts TreeX.
 - **1.0 · Stable on all three systems**: the same app, views and safety rules on macOS, Windows and Linux, the whole test suite passing on real machines (real-GPU rendering included), and the fastest of every tool we compared on each system. Everything goes to the Trash by default and every item is checked again right before it is touched.
 
-Within 1.x the command-line interface and the analysis file format change only in a compatible way. Still to come in the next releases: code signing on Windows (so SmartScreen stops asking for confirmation on first launch), app-store packages and a few engine improvements.
+Within 1.x the command-line interface and the analysis file format change only in a compatible way. Still to come in the next releases: code signing for the Windows installer and zip (the Microsoft Store version is already signed), more package managers and a few engine improvements.
 
 ## Performance
 
