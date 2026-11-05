@@ -194,6 +194,8 @@ Poi `man treex` (macOS, Linux) o `treex --help`, e il completamento con Tab in b
 
 ## Installazione
 
+Su Windows la via più semplice è il **[Microsoft Store](https://apps.microsoft.com/detail/9PGTFHQ6RMHB)** (x64 e ARM64): firmato da Microsoft, senza avvisi di SmartScreen, aggiornamenti dallo Store, comando `treex` compreso.
+
 Dalle [release](https://github.com/kikoz85/TreeX/releases), scegli il tuo sistema e il tuo processore:
 
 | Sistema | Processore | App | Solo riga di comando |
@@ -205,7 +207,7 @@ Dalle [release](https://github.com/kikoz85/TreeX/releases), scegli il tuo sistem
 | **Linux** | ARM64 (Raspberry Pi 4/5, server ARM) | `TreeX-<versione>-aarch64.AppImage`, `TreeX-<versione>-aarch64.flatpak`, `treex-<versione>-linux-aarch64.tar.gz` | `treex_<versione>_arm64.deb`, `treex-<versione>-1.aarch64.rpm`, `treex-cli-<versione>-linux-aarch64.tar.gz` |
 
 - **macOS**: apri il DMG e trascina **TreeX** in Applicazioni. La CLI `treex` è inclusa nell'app.
-- **Windows**: l'installer installa TreeX per il tuo utente, senza amministratore, con la voce nel menu Start, il comando `treex` nel PATH se lasci l'opzione e il disinstallatore in Impostazioni → App. Preferisci una copia portatile? Estrai lo zip e avvia **TreeX.exe** (la CLI è `bin\treex.exe`). Da amministratore l'analisi di un disco intero legge la Master File Table ed è istantanea dalla seconda volta (journal USN). Su un PC Windows on ARM, l'installer ARM64 sostituisce sul posto un TreeX x64. TreeX per Windows non è ancora firmato con un certificato, quindi al primo avvio SmartScreen può dire *Windows ha protetto il PC*: clicca **Ulteriori informazioni** → **Esegui comunque** (una volta sola; gli aggiornamenti dall'app non lo chiedono più).
+- **Windows**: l'installer installa TreeX per il tuo utente, senza amministratore, con la voce nel menu Start, il comando `treex` nel PATH se lasci l'opzione e il disinstallatore in Impostazioni → App. Preferisci una copia portatile? Estrai lo zip e avvia **TreeX.exe** (la CLI è `bin\treex.exe`). Da amministratore l'analisi di un disco intero legge la Master File Table ed è istantanea dalla seconda volta (journal USN). Su un PC Windows on ARM, l'installer ARM64 sostituisce sul posto un TreeX x64. L'installer e lo zip delle release non sono ancora firmati con un certificato (la versione del Microsoft Store sì), quindi al primo avvio SmartScreen può dire *Windows ha protetto il PC*: clicca **Ulteriori informazioni** → **Esegui comunque** (una volta sola; gli aggiornamenti dall'app non lo chiedono più).
 - **Linux**: l'AppImage è un file solo che gira sulla maggior parte delle distribuzioni; il Flatpak si installa con `flatpak install --user …`; l'archivio con `./install.sh` (senza root). Serve glibc 2.28 o successiva. Non sai che processore hai? `uname -m` risponde `x86_64` o `aarch64`.
 - **Solo riga di comando** (anche per i server): vedi [`treex` come comando di sistema](#treex-come-comando-di-sistema).
 

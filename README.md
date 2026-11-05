@@ -201,6 +201,8 @@ Then `man treex` (macOS, Linux) or `treex --help`, and Tab completion in bash, z
 
 ## Install
 
+On Windows the easiest way is the **[Microsoft Store](https://apps.microsoft.com/detail/9PGTFHQ6RMHB)** (x64 and ARM64): signed by Microsoft, no SmartScreen warning, updates through the Store, the `treex` command included.
+
 From the [releases](https://github.com/kikoz85/TreeX/releases), pick your system and processor:
 
 | System | Processor | App | Command line only |
@@ -212,7 +214,7 @@ From the [releases](https://github.com/kikoz85/TreeX/releases), pick your system
 | **Linux** | ARM64 (Raspberry Pi 4/5, ARM servers) | `TreeX-<version>-aarch64.AppImage`, `TreeX-<version>-aarch64.flatpak`, `treex-<version>-linux-aarch64.tar.gz` | `treex_<version>_arm64.deb`, `treex-<version>-1.aarch64.rpm`, `treex-cli-<version>-linux-aarch64.tar.gz` |
 
 - **macOS**: open the DMG and drag **TreeX** into Applications. The `treex` command-line tool ships inside the app.
-- **Windows**: the installer sets TreeX up for your user, no administrator needed, with a Start menu entry, the `treex` command in your PATH if you keep that option, and an uninstaller in Settings → Apps. Prefer a portable copy? Unzip the zip and run **TreeX.exe** (the command-line tool is `bin\treex.exe`). Run as administrator for the fastest whole-drive analysis (Master File Table) and instant re-analysis (USN journal). On a Windows on ARM PC, the ARM64 installer replaces an x64 TreeX in place. TreeX for Windows is not signed with a certificate yet, so on first launch SmartScreen may say *Windows protected your PC*: click **More info** → **Run anyway** (once; updates from the app do not ask again).
+- **Windows**: the installer sets TreeX up for your user, no administrator needed, with a Start menu entry, the `treex` command in your PATH if you keep that option, and an uninstaller in Settings → Apps. Prefer a portable copy? Unzip the zip and run **TreeX.exe** (the command-line tool is `bin\treex.exe`). Run as administrator for the fastest whole-drive analysis (Master File Table) and instant re-analysis (USN journal). On a Windows on ARM PC, the ARM64 installer replaces an x64 TreeX in place. The installer and the zip from the releases are not signed with a certificate yet (the Microsoft Store version is), so on first launch SmartScreen may say *Windows protected your PC*: click **More info** → **Run anyway** (once; updates from the app do not ask again).
 - **Linux**: the AppImage is one file that runs on most distributions; the Flatpak installs with `flatpak install --user …`; the archive installs with `./install.sh` (no root needed). Everything needs glibc 2.28 or later. Not sure which processor you have? `uname -m` says `x86_64` or `aarch64`.
 - **Command line only** (servers too): see [`treex` as a system command](#treex-as-a-system-command).
 
