@@ -28,6 +28,7 @@ Run `treex dev ~`, or press `4` in the app. `node_modules`, `target`, Flutter bu
 ## What's new in 1.x
 
 - **In the Microsoft Store**: [TreeX for Windows](https://apps.microsoft.com/detail/9PGTFHQ6RMHB) (x64 and ARM64), signed by Microsoft, updated by the Store, with the `treex` command in every terminal.
+- **1.6.4 · Android emulators, and simulators done right**: TreeX cleans Android emulators (their data only, like Wipe Data), system images, the NDK and Android Studio caches on every system; Xcode simulators are removed with Xcode's own tool so its device list stays right; running emulators and simulators are skipped.
 - **1.6.3 · Clean up more, never touch signing keys**: TreeX also finds the installers of past releases (`dist/`, `build/release-*`, never pre-selected) and test reports; signing certificates, keys and credentials are sealed on every system; empty folders are no longer proposed.
 - **1.6.1 · Safer cleaning (please update)**: TreeX never proposes folders inside installed software (app bundles, `node_modules` packages, Python and Homebrew installations), not even when the whole macOS disk is analyzed, nor folders of other users; what could not be deleted is shown with the reason.
 - **1.6 · Signed and notarized on macOS**: TreeX is signed with the developer's Developer ID and notarized by Apple: it opens with a double click, without Gatekeeper warnings, and keeps Full Disk Access across updates.

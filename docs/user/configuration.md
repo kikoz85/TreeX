@@ -102,6 +102,23 @@ versioned  = true                 # solo nomi con una versione (1.2, v0.3.0)
 holds_none = ["*.p12", "*.jks"]   # nessuno, a qualsiasi profondità
 ```
 
+## Simulatori di Xcode ed emulatori Android
+
+- **Simulatori di Xcode** (`~/Library/Developer/CoreSimulator/Devices`, da verificare): si tolgono sempre con lo strumento di Xcode (`xcrun simctl … delete all`), mai spostati nel Cestino, così l'elenco dei dispositivi resta corretto. Si ricreano in Xcode › Devices and Simulators. Se un simulatore è acceso, TreeX non li tocca.
+- **Emulatori Android** (`~/.android/avd/*.avd`, da verificare, su macOS, Windows e Linux): si tolgono solo i dati (dati utente, cache, snapshot), come *Wipe Data* di Device Manager; l'emulatore resta nell'elenco e riparte pulito. Un emulatore acceso viene saltato.
+- **SDK Android**: immagini di sistema e NDK (da verificare, si riscaricano da SDK Manager o da Gradle), cache di `~/.android` e di Android Studio. TreeX guarda le cartelle abituali (`~/Library/Android/sdk`, `~/Android/Sdk`, `%LOCALAPPDATA%\Android\Sdk`) e quelle di `ANDROID_HOME`, `ANDROID_SDK_ROOT`, `ANDROID_AVD_HOME`.
+
+Nelle regole, i `path` accettano caratteri jolly in ogni parte e una variabile d'ambiente all'inizio; `only` limita `delete-children` alle voci indicate e `lock` salta la cartella mentre il suo programma è in esecuzione:
+
+```toml
+[[rule]]
+id     = "my.emulators"
+path   = ["$MY_EMULATORS/*.vm"]
+action = "delete-children"
+only   = ["disk.img", "snapshots"]
+lock   = "running.lock"
+```
+
 Le cartelle trovate che non contengono alcun file (solo cartelle vuote) non vengono proposte: non libererebbero nulla.
 
 ## Età minima
