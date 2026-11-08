@@ -65,6 +65,45 @@ TreeX non cerca artefatti di *progetto* dentro il software installato: lì `node
 
 Le cache globali definite per percorso (DerivedData, Homebrew, pip, npm…) restano sempre riconosciute.
 
+## Chiavi di firma e credenziali
+
+Certificati, chiavi e credenziali non si toccano mai: TreeX non pulisce nulla **dentro, sopra o al posto** di queste cartelle, nemmeno con una regola per percorso o con una regola tua (`sealed` in `[[protect]]`, D48).
+
+| Sistema | Sigillati per default |
+|---|---|
+| Tutti | `~/.ssh`, `~/.gnupg`, `~/.appstoreconnect`, `~/private_keys`, `~/.password-store`, `~/.aws`, `~/.azure`, `~/.kube`, `~/.config/gh`, `~/.config/gcloud`, le credenziali di Snapcraft, Cargo e Docker, `~/.android/debug.keystore`, `~/.gradle/gradle.properties` |
+| macOS | portachiavi (`~/Library/Keychains`: Developer ID, profili di notarizzazione, account di Xcode), `~/Library/MobileDevice`, profili di provisioning di Xcode, `~/Library/Preferences` |
+| Linux | portachiavi (`~/.local/share/keyrings`, KWallet), `~/.pki` |
+| Windows | archivi dei certificati e delle chiavi (`AppData\Roaming\Microsoft\Crypto`, `SystemCertificates`, `Protect`), credenziali salvate |
+
+Per nome, ovunque: `.ssh`, `.gnupg`, `private_keys`, `.appstoreconnect`, `Provisioning Profiles`, `Keychains`. Un file elencato (per esempio `debug.keystore`) tiene intera la sua cartella; le cache accanto (`~/.gradle/caches`) si puliscono come prima. Inoltre nessuna cartella che contiene direttamente un certificato o una chiave (`*.p12`, `*.p8`, `*.pfx`, `*.jks`, `*.keystore`, `key.properties`, `*.mobileprovision`, `*.provisionprofile`) viene mai proposta.
+
+Per sigillare altre cartelle:
+
+```toml
+[[protect]]
+sealed = ["~/Firma"]
+sealed_name = ["certificati"]
+```
+
+## Pacchetti di release e report dei test
+
+- **Pacchetti di release** (`release.packages`, *da verificare*, mai selezionati da soli): cartelle come `dist`, `dist-*`, `release`, `release-*`, `build`, `out` di un progetto (accanto a `.git`, `Cargo.toml`, `package.json`, `*.xcodeproj`…) che contengono, fino a 3 livelli sotto, installer con la versione nel nome (`App-1.4.2.dmg`, `.exe`, `.msi`, `.msix`, `.AppImage`, `.deb`, `.rpm`, `.apk`, `.ipa`, `.zip`…). Una cartella che tiene un certificato o una chiave di firma non viene mai proposta (le copie dentro le app compilate e nelle dipendenze scaricate non contano).
+- **Report dei test e della copertura** (`test.coverage`, `test.reports`, *rigenerabili*): `coverage`, `htmlcov`, `.nyc_output`, `test-results`, `playwright-report`, `allure-results`, `TestResults`… accanto ai file di un progetto.
+
+Le regole possono usare gli stessi controlli:
+
+```toml
+[[rule]]
+id         = "my.installers"
+dir        = ["pacchetti"]
+holds_any  = ["*.dmg", "*.msi"]   # almeno uno, fino a 3 livelli sotto
+versioned  = true                 # solo nomi con una versione (1.2, v0.3.0)
+holds_none = ["*.p12", "*.jks"]   # nessuno, a qualsiasi profondità
+```
+
+Le cartelle trovate che non contengono alcun file (solo cartelle vuote) non vengono proposte: non libererebbero nulla.
+
 ## Età minima
 
 Per proporre solo i progetti fermi da un po':

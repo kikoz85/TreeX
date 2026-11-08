@@ -28,6 +28,7 @@ TreeX scansiona milioni di file in pochi secondi usando le API native di ogni si
 ## Le novità della 1.x
 
 - **Nel Microsoft Store**: [TreeX per Windows](https://apps.microsoft.com/detail/9PGTFHQ6RMHB) (x64 e ARM64), firmato da Microsoft, aggiornato dallo Store, con il comando `treex` in ogni terminale.
+- **1.6.3 · Più spazio, chiavi di firma intoccabili**: TreeX trova anche gli installer delle versioni passate (`dist/`, `build/release-*`, mai selezionati da soli) e i report dei test; certificati, chiavi e credenziali sono sigillati su ogni sistema; le cartelle vuote non vengono più proposte.
 - **1.6.1 · Pulizia più sicura (aggiorna)**: TreeX non propone mai cartelle dentro il software installato (app, pacchetti in `node_modules`, installazioni di Python e Homebrew), nemmeno analizzando tutto il disco del Mac, né cartelle di altri utenti; ciò che non si è potuto eliminare viene indicato con il motivo.
 - **1.6 · Firmato e notarizzato su macOS**: TreeX è firmato con il Developer ID dello sviluppatore e notarizzato da Apple: si apre con un doppio clic, senza avvisi di Gatekeeper, e mantiene l'accesso completo al disco dopo gli aggiornamenti.
 - **1.5 · ARM64**: versioni native per Linux ARM64 (Raspberry Pi 4/5, server ARM, macchine virtuali sui Mac con Apple Silicon) e Windows on ARM, costruite e provate su macchine ARM. L'app si aggiorna da sola anche su ARM.

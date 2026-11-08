@@ -28,6 +28,7 @@ Run `treex dev ~`, or press `4` in the app. `node_modules`, `target`, Flutter bu
 ## What's new in 1.x
 
 - **In the Microsoft Store**: [TreeX for Windows](https://apps.microsoft.com/detail/9PGTFHQ6RMHB) (x64 and ARM64), signed by Microsoft, updated by the Store, with the `treex` command in every terminal.
+- **1.6.3 · Clean up more, never touch signing keys**: TreeX also finds the installers of past releases (`dist/`, `build/release-*`, never pre-selected) and test reports; signing certificates, keys and credentials are sealed on every system; empty folders are no longer proposed.
 - **1.6.1 · Safer cleaning (please update)**: TreeX never proposes folders inside installed software (app bundles, `node_modules` packages, Python and Homebrew installations), not even when the whole macOS disk is analyzed, nor folders of other users; what could not be deleted is shown with the reason.
 - **1.6 · Signed and notarized on macOS**: TreeX is signed with the developer's Developer ID and notarized by Apple: it opens with a double click, without Gatekeeper warnings, and keeps Full Disk Access across updates.
 - **1.5 · ARM64**: native builds for Linux ARM64 (Raspberry Pi 4/5, ARM servers, virtual machines on Apple Silicon Macs) and Windows on ARM, built and tested on ARM machines. The app updates itself on ARM too.
